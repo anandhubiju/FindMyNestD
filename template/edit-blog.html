@@ -1,0 +1,384 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<title>FindMyNest</title>
+
+		<!-- Meta -->
+		<meta charset="utf-8">
+		<meta http-equiv="X-UA-Compatible" content="IE=edge">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+		<meta name="description"
+			content="Portal - Bootstrap 5 Admin Dashboard Template For Developers">
+		<meta name="author" content="Xiaoying Riley at 3rd Wave Media">
+		<link rel="shortcut icon" href="favicon.ico">
+
+		<!-- FontAwesome JS-->
+		<script defer src="{% static 'assets1/plugins/fontawesome/js/all.min.js' %}"></script>
+
+		<style>
+			/* Add a hover effect to the app-card */
+			.app-card:hover {
+				box-shadow: 0 0 10px rgba(0, 0, 0, 0.2); /* Change the box shadow on hover */
+				transform: translateY(-5px); /* Move the card up slightly on hover */
+			}
+		
+			/* Add a hover effect to the card-text link */
+			.card-text:hover {
+				color: rgb(0, 153, 0); /* Change the text color on hover */
+				text-decoration: underline; /* Add underline on hover */
+			}
+			.navbar-brand {
+				margin-left: 30px; /* Adjust the margin value as needed */
+			}
+
+			#app-sidepanel {
+				width: 250px; /* Set an initial width */
+				height: 100%; /* Take the full height of the viewport */
+				position: fixed;
+				top: 0;
+				left: -250px; /* Hide the panel initially */
+				background-color: #333;
+				color: #fff;
+				transition: left 0.3s ease; /* Add a smooth transition effect for the left property */
+			  }
+			  
+			  /* Media query for screens with a width of 768px or more */
+			  @media (min-width: 768px) {
+				#app-sidepanel {
+				  left: 0; /* Show the panel */
+				}
+			  }
+			  .top-margin {
+				margin-top: 60px !important; /* Adjust the value as needed */
+			}
+
+		</style>
+		
+		<link href="https://cdn.datatables.net/1.13.6/css/dataTables.bootstrap5.min.css" rel="stylesheet">
+<link href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/5.3.0/css/bootstrap.min.css" rel="stylesheet">
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.5.0/dist/css/bootstrap.min.css" rel="stylesheet">
+  <!-- Favicons -->
+  <link href="{% static 'assets/img/favicon.png' %}" rel="icon">
+  <link href="{% static 'assets/img/apple-touch-icon.png' %}" rel="apple-touch-icon">
+
+  <!-- Google Fonts -->
+  <link href="https://fonts.googleapis.com/css?family=Poppins:300,400,500,600,700" rel="stylesheet">
+
+  <!-- Vendor CSS Files -->
+  <link href="{% static 'assets/vendor/animate.css/animate.min.css' %}" rel="stylesheet">
+  <link href="{% static 'assets/vendor/bootstrap/css/bootstrap.min.css' %}" rel="stylesheet">
+  <link href="{% static 'assets/vendor/bootstrap-icons/bootstrap-icons.css' %}" rel="stylesheet">
+  <link href="{% static 'assets/vendor/swiper/swiper-bundle.min.css' %}" rel="stylesheet">
+
+  <!-- Template Main CSS File -->
+  <link href="{% static 'assets/css/style.css' %}" rel="stylesheet">
+
+
+  <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+  <!-- Include DataTables JavaScript -->
+  <script type="text/javascript" charset="utf8" src="https://cdn.datatables.net/1.11.10/js/jquery.dataTables.js"></script>
+
+  <!-- Vendor JS Files -->
+  <script src="{% static 'assets/vendor/bootstrap/js/bootstrap.bundle.min.js' %}"></script>
+  <script src="{% static 'assets/vendor/swiper/swiper-bundle.min.js' %}"></script>
+  <script src="{% static 'assets/vendor/php-email-form/validate.js' %}"></script>
+
+
+  <script src="https://code.jquery.com/jquery-3.7.0.js"></script>
+  <script src="https://cdn.datatables.net/1.13.6/js/jquery.dataTables.min.js"></script>
+  <script src="https://cdn.datatables.net/1.13.6/js/dataTables.bootstrap5.min.js"></script>
+
+
+		<!-- App CSS -->
+		<link id="theme-style" rel="stylesheet"
+			href="{% static 'assets1/css/portal.css' %}">
+
+	</head>
+
+	<body class="app" style="background-color: #eeeeee; ">
+		<header class="app-header fixed-top">
+
+			<nav class="navbar navbar-default navbar-trans navbar-expand-lg fixed-top">
+				<a class="navbar-brand text-brand" href="index.html">FindM<span class="color-b">yNest</span></a>
+					  <div class="container">
+			
+				  <div class="navbar-collapse collapse justify-content-center" id="navbarDefault">
+					<ul class="navbar-nav">
+					  <li class="nav-item">
+						<a class="nav-link active" href="{% url 'index' %}">Home</a>
+					  </li>
+			
+			
+					  {% if user.is_superuser %}
+					  <li class="nav-item">
+						<a class="nav-link " href="{% url 'propertylist' %}">Property</a>
+					  </li>
+					  <li class="nav-item dropdown">
+						<a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false"> Welcome,  {{ user.username }}!</a>
+						<div class="dropdown-menu">
+						  <a class="dropdown-item " href="{% url 'logout' %}">Logout</a>
+						</div>
+					  </li>
+					 {%  elif  user.is_authenticated %}
+					 {% if user.user_type == user.EDITOR %}
+					  {% comment %} <li class="nav-item">
+						<a class="nav-link " href="{% url 'propertylist' %}">Property</a>
+					  </li>
+					  <li class="nav-item">
+						<a class="nav-link " href="{% url 'addproperty' %}">Post Property</a>
+					  </li> {% endcomment %}
+					  <li class="nav-item dropdown">
+						<a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false"> Welcome, EDITOR {{ user.username }} </a>
+						<div class="dropdown-menu">
+						  <a class="dropdown-item " href="{% url 'logout' %}">Logout</a>
+						  <a class="dropdown-item " href="{% url 'editprofile' %}">Profile</a>
+						</div>
+					  </li> 
+					  {% endif %}
+					  {% else %}
+					  <li class="nav-item">
+						<a class="nav-link " href="contact.html">Welcome, guest!</a>
+					  </li>
+					  <li class="nav-item">
+						<a class="nav-link " href="/register">Register</a>
+					  </li>
+					  <li class="nav-item">
+						<a class="nav-link " href="{% url 'login' %}">Login</a>
+					  </li>
+					  {% endif %}
+					</ul>
+			
+				  </div>
+			
+				  <!-- <button type="button" class="btn btn-b-n navbar-toggle-box navbar-toggle-box-collapse" data-bs-toggle="collapse" data-bs-target="#navbarTogglerDemo01">
+					<i class="bi bi-search"></i>
+				  </button> -->
+			
+				</div>
+			  </nav>
+
+
+			<div id="app-sidepanel" class="app-sidepanel">
+				<div id="sidepanel-drop" class="sidepanel-drop"></div>
+				<div class="sidepanel-inner d-flex flex-column">
+					<a href="#" id="sidepanel-close" class="sidepanel-close d-xl-none">&times;</a>
+					<div class="app-branding">
+						<a class="app-logo" href="index.html"><span class="logo-text">FindMyNest</span></a>
+
+					</div><!--//app-branding-->
+
+					<nav id="app-nav-main" class="app-nav app-nav-main flex-grow-1">
+						<ul class="app-menu list-unstyled accordion" id="menu-accordion">
+							<li class="nav-item">
+								<!--//Bootstrap Icons: https://icons.getbootstrap.com/ -->
+								<a class="nav-link active" href="{% url 'executivedashboard' %}">
+									<span class="nav-icon">
+										<svg width="1em" height="1em" viewBox="0 0 16 16"
+											class="bi bi-house-door" fill="currentColor"
+											xmlns="http://www.w3.org/2000/svg">
+											<path fill-rule="evenodd"
+												d="M7.646 1.146a.5.5 0 0 1 .708 0l6 6a.5.5 0 0 1 .146.354v7a.5.5 0 0 1-.5.5H9.5a.5.5 0 0 1-.5-.5v-4H7v4a.5.5 0 0 1-.5.5H2a.5.5 0 0 1-.5-.5v-7a.5.5 0 0 1 .146-.354l6-6zM2.5 7.707V14H6v-4a.5.5 0 0 1 .5-.5h3a.5.5 0 0 1 .5.5v4h3.5V7.707L8 2.207l-5.5 5.5z" />
+											<path fill-rule="evenodd"
+												d="M13 2.5V6l-2-2V2.5a.5.5 0 0 1 .5-.5h1a.5.5 0 0 1 .5.5z" />
+										</svg>
+									</span>
+									<span class="nav-link-text">Overview</span>
+								</a><!--//nav-link-->
+							</li><!--//nav-item-->
+							<li class="nav-item">
+								<!--//Bootstrap Icons: https://icons.getbootstrap.com/ -->
+								<a class="nav-link" href="{% url 'editprofile' %}">
+									<span class="nav-icon">
+										<svg width="1em" height="1em" viewBox="0 0 16 16"
+											class="bi bi-card-list" fill="currentColor"
+											xmlns="http://www.w3.org/2000/svg">
+											<path fill-rule="evenodd"
+												d="M14.5 3h-13a.5.5 0 0 0-.5.5v9a.5.5 0 0 0 .5.5h13a.5.5 0 0 0 .5-.5v-9a.5.5 0 0 0-.5-.5zm-13-1A1.5 1.5 0 0 0 0 3.5v9A1.5 1.5 0 0 0 1.5 14h13a1.5 1.5 0 0 0 1.5-1.5v-9A1.5 1.5 0 0 0 14.5 2h-13z" />
+											<path fill-rule="evenodd"
+												d="M5 8a.5.5 0 0 1 .5-.5h7a.5.5 0 0 1 0 1h-7A.5.5 0 0 1 5 8zm0-2.5a.5.5 0 0 1 .5-.5h7a.5.5 0 0 1 0 1h-7a.5.5 0 0 1-.5-.5zm0 5a.5.5 0 0 1 .5-.5h7a.5.5 0 0 1 0 1h-7a.5.5 0 0 1-.5-.5z" />
+											<circle cx="3.5" cy="5.5" r=".5" />
+											<circle cx="3.5" cy="8" r=".5" />
+											<circle cx="3.5" cy="10.5" r=".5" />
+										</svg>
+									</span>
+									<span class="nav-link-text">Profile</span>
+								</a><!--//nav-link-->
+							</li><!--//nav-item-->
+							<li class="nav-item">
+								<!--//Bootstrap Icons: https://icons.getbootstrap.com/ -->
+								<a class="nav-link" href="{% url 'home_interiors_details' %}">
+									<span class="nav-icon">
+										<svg width="1em" height="1em" viewBox="0 0 16 16"
+											class="bi bi-card-list" fill="currentColor"
+											xmlns="http://www.w3.org/2000/svg">
+											<path fill-rule="evenodd"
+												d="M14.5 3h-13a.5.5 0 0 0-.5.5v9a.5.5 0 0 0 .5.5h13a.5.5 0 0 0 .5-.5v-9a.5.5 0 0 0-.5-.5zm-13-1A1.5 1.5 0 0 0 0 3.5v9A1.5 1.5 0 0 0 1.5 14h13a1.5 1.5 0 0 0 1.5-1.5v-9A1.5 1.5 0 0 0 14.5 2h-13z" />
+											<path fill-rule="evenodd"
+												d="M5 8a.5.5 0 0 1 .5-.5h7a.5.5 0 0 1 0 1h-7A.5.5 0 0 1 5 8zm0-2.5a.5.5 0 0 1 .5-.5h7a.5.5 0 0 1 0 1h-7a.5.5 0 0 1-.5-.5zm0 5a.5.5 0 0 1 .5-.5h7a.5.5 0 0 1 0 1h-7a.5.5 0 0 1-.5-.5z" />
+											<circle cx="3.5" cy="5.5" r=".5" />
+											<circle cx="3.5" cy="8" r=".5" />
+											<circle cx="3.5" cy="10.5" r=".5" />
+										</svg>
+									</span>
+									<span class="nav-link-text">Home Interiors Applications</span>
+								</a><!--//nav-link-->
+							</li>
+							<li class="nav-item">
+								<!--//Bootstrap Icons: https://icons.getbootstrap.com/ -->
+								<a class="nav-link" href="{% url 'home_Loan_details' %}">
+									<span class="nav-icon">
+										<svg width="1em" height="1em" viewBox="0 0 16 16"
+											class="bi bi-card-list" fill="currentColor"
+											xmlns="http://www.w3.org/2000/svg">
+											<path fill-rule="evenodd"
+												d="M14.5 3h-13a.5.5 0 0 0-.5.5v9a.5.5 0 0 0 .5.5h13a.5.5 0 0 0 .5-.5v-9a.5.5 0 0 0-.5-.5zm-13-1A1.5 1.5 0 0 0 0 3.5v9A1.5 1.5 0 0 0 1.5 14h13a1.5 1.5 0 0 0 1.5-1.5v-9A1.5 1.5 0 0 0 14.5 2h-13z" />
+											<path fill-rule="evenodd"
+												d="M5 8a.5.5 0 0 1 .5-.5h7a.5.5 0 0 1 0 1h-7A.5.5 0 0 1 5 8zm0-2.5a.5.5 0 0 1 .5-.5h7a.5.5 0 0 1 0 1h-7a.5.5 0 0 1-.5-.5zm0 5a.5.5 0 0 1 .5-.5h7a.5.5 0 0 1 0 1h-7a.5.5 0 0 1-.5-.5z" />
+											<circle cx="3.5" cy="5.5" r=".5" />
+											<circle cx="3.5" cy="8" r=".5" />
+											<circle cx="3.5" cy="10.5" r=".5" />
+										</svg>
+									</span>
+									<span class="nav-link-text">Home Loan Details</span>
+								</a><!--//nav-link-->
+							</li>
+							
+								<!--//nav-item-->
+							<!--//nav-item-->
+							<li class="nav-item">
+								<!--//Bootstrap Icons: https://icons.getbootstrap.com/ -->
+								<a class="nav-link" href="{% url 'logout' %}">
+									<span class="nav-icon">
+										<svg width="1em" height="1em" viewBox="0 0 16 16"
+											class="bi bi-card-list" fill="currentColor"
+											xmlns="http://www.w3.org/2000/svg">
+											<path fill-rule="evenodd"
+												d="M14.5 3h-13a.5.5 0 0 0-.5.5v9a.5.5 0 0 0 .5.5h13a.5.5 0 0 0 .5-.5v-9a.5.5 0 0 0-.5-.5zm-13-1A1.5 1.5 0 0 0 0 3.5v9A1.5 1.5 0 0 0 1.5 14h13a1.5 1.5 0 0 0 1.5-1.5v-9A1.5 1.5 0 0 0 14.5 2h-13z" />
+											<path fill-rule="evenodd"
+												d="M5 8a.5.5 0 0 1 .5-.5h7a.5.5 0 0 1 0 1h-7A.5.5 0 0 1 5 8zm0-2.5a.5.5 0 0 1 .5-.5h7a.5.5 0 0 1 0 1h-7a.5.5 0 0 1-.5-.5zm0 5a.5.5 0 0 1 .5-.5h7a.5.5 0 0 1 0 1h-7a.5.5 0 0 1-.5-.5z" />
+											<circle cx="3.5" cy="5.5" r=".5" />
+											<circle cx="3.5" cy="8" r=".5" />
+											<circle cx="3.5" cy="10.5" r=".5" />
+										</svg>
+									</span>
+									<span class="nav-link-text">Sing Out</span>
+								</a><!--//nav-link-->
+							</li><!--//nav-item-->
+							</ul><!--//footer-menu-->
+						</nav>
+					</div><!--//app-sidepanel-footer-->
+
+				</div><!--//sidepanel-inner-->
+			</div><!--//app-sidepanel-->
+		</header><!--//app-header-->
+
+		<div class="app-wrapper" style="background-color: rgb(255, 255, 255); ">
+			<div class="app-content pt-3 p-md-3 p-lg-4">
+			  <div class="custom-container">
+	  
+	  
+				<section class="intro-single">
+				  <div class="container" style="max-width: 1700px;">
+					<div class="row">
+					  <div class="col-md-12 col-lg-8">
+						<div class="title-single-box">
+						  <h1 class="title-single">Add Executive</h1>
+						 
+						</div>
+					  </div>
+					</div>
+				  </div>
+				</section>
+				<form id="editPostForm" method="POST" enctype="multipart/form-data">
+					{% csrf_token %}
+					<div class="mb-5">
+						<!-- Image -->
+						<img id="postImage" class="img-fluid w-100 rounded mb-5" src="{{ post.image.url }}" alt="">
+						<input type="file" id="image" name="image" class="form-control mb-5">
+						<!-- Editable Title -->
+	
+						<h2 class="mb-4">Title and Introduction</h2>
+						<input type="text" id="title" name="title" class="form-control mb-4" value="{{ post.title }}">
+						<!-- Editable Intro -->
+						<textarea id="intro" name="intro" class="form-control mb-4" rows="4">{{ post.intro }}</textarea>
+						<!-- Editable Subtitle1 -->
+						<h2 class="mb-4">Subtitle 1</h2>
+						<input type="text" id="subtitle1" name="subtitle1" class="form-control mb-4"
+							value="{{ post.subtitle1 }}">
+						<!-- Editable Content1 -->
+						<textarea id="content1" name="content1" class="form-control mb-4"
+							rows="4">{{ post.content1 }}</textarea>
+						<!-- Editable Subtitle2 -->
+						<h2 class="mb-4">Subtitle 2</h2>
+						<input type="text" id="subtitle2" name="subtitle2" class="form-control mb-4"
+							value="{{ post.subtitle2 }}">
+						<!-- Editable Content2 -->
+						<textarea id="content2" name="content2" class="form-control mb-4"
+							rows="4">{{ post.content2 }}</textarea>
+						<!-- Editable Subtitle3 -->
+						<h2 class="mb-4">Subtitle 3</h2>
+						<input type="text" id="subtitle3" name="subtitle3" class="form-control mb-4"
+							value="{{ post.subtitle3 }}">
+						<!-- Editable Content3 -->
+						<textarea id="content3" name="content3" class="form-control mb-4"
+							rows="4">{{ post.content3 }}</textarea>
+						
+						<!-- Save Button -->
+						<div class="text-center">
+							<a href="{% url "view_blog_editor" %}" class="btn btn-danger w-25 mt-5 py-3">DISCARD</a>
+							<button type="submit" class="btn btn-success w-25 mt-5 py-3">SAVE</button>
+						</div>
+	
+					</div>
+				</form>
+				<!--//tab-content-->
+			  </div>
+			  <!--//container-fluid-->
+			</div>
+			<!--//app-content-->
+	  
+			<!--//app-footer-->
+		  </div>
+					<!-- Javascript -->
+					<script src="{% static 'assets1/plugins/popper.min.js' %}"></script>
+					<script src="{% static 'assets1/plugins/bootstrap/js/bootstrap.min.js' %}"></script>
+
+					<!-- Charts JS -->
+					<script src="{% static 'assets1/plugins/chart.js/chart.min.js' %}"></script>
+					<script src="{% static 'assets1/js/index-charts.js' %}"></script>
+
+					<!-- Page Specific JS -->
+					<script src="{% static 'assets1/js/app.js' %}"></script>
+					<script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+
+
+					<script type="text/javascript">
+						
+    google.charts.load("current", { packages: ["corechart"] });
+    google.charts.setOnLoadCallback(drawChart);
+
+    function drawChart() {
+        // Replace these values with the actual count of active and not active users
+        var activeCount = parseInt('{{ active_count }}');
+        var notActiveCount = parseInt('{{ not_active_count }}');
+
+        var data = google.visualization.arrayToDataTable([
+            ['Task', 'Percentage'],
+            ['Active', activeCount],
+            ['Not Active', notActiveCount],
+        ]);
+
+        var options = {
+            is3D: true,
+            legend: 'none',
+            pieSliceText: 'none',
+        };
+
+        var chart = new google.visualization.PieChart(document.getElementById('piechart_user_status'));
+        chart.draw(data, options);
+    }
+</script> 
+				</body>
+			</html>

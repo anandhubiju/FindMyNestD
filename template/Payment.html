@@ -1,0 +1,283 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>FindMyNest</title>
+    <meta content="" name="description">
+    <meta content="" name="keywords">
+  
+    <!-- Favicons -->
+    <link href="{% static 'assets\images\Icon.png' %}" rel="icon">
+    <link href="{% static 'assets\images\Icon.png' %}"" rel="apple-touch-icon">
+
+
+    <link rel="preconnect" href="https://fonts.gstatic.com" />
+    <link
+        href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-alpha1/dist/css/bootstrap.min.css"
+        rel="stylesheet" />
+    <link
+        href="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"
+        rel="stylesheet" />
+    <link
+        href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-alpha1/dist/css/bootstrap.min.css"
+        rel="stylesheet" />
+    <link
+        href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+        rel="stylesheet" />
+    <link
+        href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.bundle.min.js"
+        rel="stylesheet" />
+        <link
+        href="https://fonts.googleapis.com/css2?family=Roboto+Condensed:wght@400;700&family=Roboto:wght@400;700&display=swap"
+        rel="stylesheet" />
+
+    <!-- Icon Font Stylesheet -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css"
+     rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">    
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL"
+      crossorigin="anonymous"></script>
+    <script src="https://checkout.razorpay.com/v1/checkout.js"></script>
+<style>
+    body {
+        color: #000;
+        overflow-x: hidden;
+        height: 100%;
+        background-color: #ffffff;
+        background-repeat: no-repeat;
+    }
+    
+    .card {
+        padding: 30px 25px 35px 50px;
+        border-radius: 60px;
+        box-shadow: 0px 4px 8px 0px #47c436;
+        margin-top: 120px;
+        margin-bottom: 50px;
+    }
+    
+    .border-line {
+        border-right: 1px solid #BDBDBD;
+    }
+    
+    .text-sm {
+        font-size: 13px;
+    }
+    
+    .text-md {
+        font-size: 18px;
+    }
+    
+    .image {
+        width: 60px;
+        height: 30px;
+    }
+    
+    ::placeholder {
+        color: grey;
+        opacity: 1;
+    }
+    
+    :-ms-input-placeholder {
+        color: grey;
+    }
+    
+    ::-ms-input-placeholder {
+        color: grey;
+    }
+    
+    input {
+        padding: 2px 0px;
+        border: none;
+        border-bottom: 1px solid lightgrey;
+        margin-bottom: 5px;
+        margin-top: 2px;
+        box-sizing: border-box;
+        color: #000;
+        font-size: 16px;
+        letter-spacing: 1px;
+        font-weight: 500;
+    }
+    
+    input:focus {
+        -moz-box-shadow: none !important;
+        -webkit-box-shadow: none !important;
+        box-shadow: none !important;
+        border-bottom: 1px solid #EF5350;
+        outline-width: 0;
+    }
+    
+    button:focus {
+        -moz-box-shadow: none !important;
+        -webkit-box-shadow: none !important;
+        box-shadow: none !important;
+        outline-width: 0;
+    }
+    
+    .btn-red {
+        background-color: #EF5350;
+        color: #fff;
+        padding: 8px 25px;
+        border-radius: 50px;
+        font-size: 18px;
+        letter-spacing: 2px;
+        border: 2px solid #fff;
+    }
+    
+    .btn-red:hover {
+        box-shadow: 0 0 0 2px #EF5350;
+    }
+    
+    .btn-red:focus {
+        box-shadow: 0 0 0 2px #EF5350 !important;
+    }
+    
+    .custom-checkbox .custom-control-input:checked~.custom-control-label::before {
+        background-color: #EF5350;
+    }
+    
+    @media screen and (max-width: 575px) {
+        .border-line {
+            border-right: none;
+            border-bottom: 1px solid #EEEEEE;
+        }
+    }
+</style>
+    <!-- Include Razorpay's JavaScript SDK -->
+</head>
+<body>
+    <form class="p-4" id="payment-form">
+    <div class="container-fluid px-1 px-md-2 px-lg-4 py-5 mx-auto">
+        <div class="row d-flex justify-content-center">
+            <div class="col-xl-7 col-lg-8 col-md-9 col-sm-11">
+                <div class="card border-0">
+                    <div class="row justify-content-center">
+                        <h3 class="mb-4">Conform Page</h3>
+                    </div>
+                    <div class="row">
+                        
+                        <div class="col-sm-7 border-line pb-3" >
+                            <div class="form-group">
+                                <p class="text-muted text-sm mb-0" style="font-size: 20px;">Name:</p>
+                                <input type="text" name="name" value="{{ user.username }}" id="name" name="name" disabled required maxlength="19">
+                            </div>
+                            <div class="form-group">
+                                <p class="text-muted text-sm mb-0" style="font-size: 20px;">Email:</p>
+                                <input type="text" id="email" name="email" value="{{ user.email }}" disabled required maxlength="19">
+                            </div>
+                            <div class="form-group">
+                                <p class="text-muted text-sm mb-0" style="font-size: 20px;">Subscription Type</p>
+                                <input type="text" value="{{ sub_type.sub_type }}" disabled required maxlength="19">
+                            </div>
+                            <div class="form-group">
+                                <p class="text-muted text-sm mb-0" style="font-size: 20px;">Validity</p>
+                                <input ttype="text" value="{{ sub_type.validity }}" disabled required maxlength="19">
+                            </div>
+                            <div class="form-group mb-0">
+                                <div class="custom-control custom-checkbox custom-control-inline">
+                                    <label for="chk1" class="custom-control-label text-muted text-sm">Payment To FindMyNest</label>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-sm-5 text-sm-center justify-content-center pt-4 pb-4">
+                            <small class="text-sm text-muted">Order number</small>
+                            <h5 class="mb-5">12345678</h5>
+                            <small class="text-sm text-muted">Payment amount</small>
+                            <div class="row px-3 justify-content-sm-center">
+                                <h2 class=""><span class="text-md font-weight-bold mr-2">$</span><span class="text-danger">{{ sub_type.price }}</span></h2>
+                            </div>
+                            <button type="button" id="pay-btn" class="btn btn-red text-center mt-4">PAY</button>
+                        </div>
+                   
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</form>
+
+    <script src="https://checkout.razorpay.com/v1/checkout.js"></script>
+    <script>
+      var options = {
+         
+        // Enter the Key ID generated from the Dashboard
+        key: "{{ razorpay_merchant_key }}",
+         
+        // Amount is in currency subunits.
+        // Default currency is INR. Hence,
+        // 50000 refers to 50000 paise
+        amount: "{{ razorpay_amount }}",
+        currency: "{{ currency }}",
+         
+        // Your/store name.
+        name: "Dj Razorpay",
+         
+        // Pass the `id` obtained in the response of Step 1
+        order_id: "{{ razorpay_order_id }}",
+        callback_url: "{{ callback_url }}",
+      };
+       
+      // initialise razorpay with the options.
+      var rzp1 = new Razorpay(options);
+       
+      // add event listener to the payment button.
+      document.getElementById("pay-btn").onclick = function (e) {
+        rzp1.open();
+        e.preventDefault();
+      };
+    </script>
+    <script>
+        $(document).ready(function(){
+
+            //For Card Number formatted input
+            var cardNum = document.getElementById('cr_no');
+            cardNum.onkeyup = function (e) {
+                if (this.value == this.lastValue) return;
+                var caretPosition = this.selectionStart;
+                var sanitizedValue = this.value.replace(/[^0-9]/gi, '');
+                var parts = [];
+                
+                for (var i = 0, len = sanitizedValue.length; i < len; i += 4) {
+                    parts.push(sanitizedValue.substring(i, i + 4));
+                }
+                
+                for (var i = caretPosition - 1; i >= 0; i--) {
+                    var c = this.value[i];
+                    if (c < '0' || c > '9') {
+                        caretPosition--;
+                    }
+                }
+                caretPosition += Math.floor(caretPosition / 4);
+                
+                this.value = this.lastValue = parts.join(' ');
+                this.selectionStart = this.selectionEnd = caretPosition;
+            }
+            
+            //For Date formatted input
+            var expDate = document.getElementById('exp');
+            expDate.onkeyup = function (e) {
+                if (this.value == this.lastValue) return;
+                var caretPosition = this.selectionStart;
+                var sanitizedValue = this.value.replace(/[^0-9]/gi, '');
+                var parts = [];
+                
+                for (var i = 0, len = sanitizedValue.length; i < len; i += 2) {
+                    parts.push(sanitizedValue.substring(i, i + 2));
+                }
+                
+                for (var i = caretPosition - 1; i >= 0; i--) {
+                    var c = this.value[i];
+                    if (c < '0' || c > '9') {
+                        caretPosition--;
+                    }
+                }
+                caretPosition += Math.floor(caretPosition / 2);
+                
+                this.value = this.lastValue = parts.join('/');
+                this.selectionStart = this.selectionEnd = caretPosition;
+            }
+            
+            });
+    </script>
+</body>
+</html>

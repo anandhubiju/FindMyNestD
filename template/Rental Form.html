@@ -1,0 +1,732 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <meta content="width=device-width, initial-scale=1.0" name="viewport">
+
+  <title>EstateAgency Bootstrap Template - Index</title>
+  <meta content="" name="description">
+  <meta content="" name="keywords">
+
+  <!-- Favicons -->
+  <link href="" rel="icon">
+  <link href="{% static 'assets/img/apple-touch-icon.png' %}" rel="apple-touch-icon">
+
+  <!-- Google Fonts -->
+  <link href="https://fonts.googleapis.com/css?family=Poppins:300,400,500,600,700" rel="stylesheet">
+
+  <!-- Vendor CSS Files -->
+  <link href="{% static 'assets/vendor/animate.css/animate.min.css' %}" rel="stylesheet">
+  <link href="{% static 'assets/vendor/bootstrap/css/bootstrap.min.css' %}" rel="stylesheet">
+  <link href="{% static 'assets/vendor/bootstrap-icons/bootstrap-icons.css' %}" rel="stylesheet">
+  <link href="{% static 'assets/vendor/swiper/swiper-bundle.min.css' %}" rel="stylesheet">
+
+  <!-- Template Main CSS File -->
+  <link href="{% static 'assets/css/style.css' %}" rel="stylesheet">
+
+  <!-- =======================================================
+  * Template Name: EstateAgency
+  * Updated: Jul 27 2023 with Bootstrap v5.3.1
+  * Template URL: https://bootstrapmade.com/real-estate-agency-bootstrap-template/
+  * Author: BootstrapMade.com
+  * License: https://bootstrapmade.com/license/
+  ======================================================== -->
+
+
+  <style>
+    body {
+        font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        margin: 20px;
+        color: #333;
+        background-color: #f7f7f7; /* Light gray background */
+    }
+
+    h1 {
+        text-align: center;
+        color: #27ae60; /* Green header color */
+    }
+
+    .container {
+        display: flex;
+        justify-content: space-around;
+        align-items: flex-start;
+        margin: 20px;
+    }
+
+    form {
+        flex: 1;
+        max-width: 400px;
+        padding: 20px;
+        background-color: #fff;
+        border-radius: 8px;
+        box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    }
+
+    label {
+        display: block;
+        margin-bottom: 8px;
+        font-weight: bold;
+        color: #27ae60; /* Green label color */
+    }
+
+    input,
+    select {
+        width: 100%;
+        padding: 8px;
+        margin-bottom: 10px;
+        box-sizing: border-box;
+        border: 1px solid #ccc;
+        border-radius: 4px;
+        font-size: 16px;
+    }
+
+    button {
+        display: block;
+        width: 100%;
+        padding: 12px;
+        background-color: #27ae60; /* Green button color */
+        color: #fff;
+        border: none;
+        border-radius: 4px;
+        cursor: pointer;
+        transition: background-color 0.3s;
+    }
+
+    button:hover {
+        background-color: #219d54; /* Darker green on hover */
+    }
+
+    #template {
+        flex: 1;
+        margin-left: 20px;
+        padding: 20px;
+        background-color: #ecf0f1; /* Light gray background for the template */
+        border-radius: 8px;
+        border: 1px solid #ccc;
+        box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    }
+
+    #template h2 {
+        color: #27ae60; /* Green heading color */
+        text-align: center;
+        margin-bottom: 20px;
+    }
+
+    #propertyType,
+    #floorDetails,
+    #parkingDetails {
+        margin-top: 10px;
+    }
+
+    #propertyType label,
+    #floorDetails label,
+    #parkingDetails label {
+        color: #27ae60; /* Green label color */
+    }
+
+    #propertyType select,
+    #floorDetails input,
+    #parkingDetails input {
+        width: 100%;
+        padding: 8px;
+        margin-bottom: 10px;
+        box-sizing: border-box;
+        border: 1px solid #ccc;
+        border-radius: 4px;
+        font-size: 16px;
+    }
+
+
+    /* Additional styling for an attractive appearance */
+    #template p,
+    #template ol {
+        font-size: 16px;
+        color: #333;
+    }
+
+    #template ol {
+        list-style-type: decimal;
+    }
+
+    #template p.witness {
+        margin-top: 20px;
+        text-align: center; /* Align text center */
+        font-style: italic;
+        color: #888;
+    }
+
+    #template p.user-input {
+        font-weight: bold;
+        background-color: #a9dfbf; /* Light green shade */
+        padding: 4px;
+        border-radius: 4px;
+        display: inline;
+    }
+    .is-invalid {
+        border: 1px solid #dc3545 !important;
+    }
+    .container {
+        max-width: 1200px; /* Set your desired max-width value */
+        margin: 0 auto; /* Center the container */
+    }
+
+    .agents-grid {
+        width: 100%; /* Set the width to 100% */
+    }
+    .intro-single {
+        height: 300px; /* Set your desired height value */
+    }
+</style>
+</head>
+
+<body>
+
+  <!-- ======= Property Search Section ======= -->
+  <div class="click-closed"></div>
+  <!--/ Form Search Star /-->
+  <div class="box-collapse">
+    <div class="title-box-d">
+      <h3 class="title-d">Search Property</h3>
+    </div>
+    <span class="close-box-collapse right-boxed bi bi-x"></span>
+    <div class="box-collapse-wrap form">
+      <form class="form-a">
+        <div class="row">
+          <div class="col-md-12 mb-2">
+            <div class="form-group">
+              <label class="pb-2" for="Type">Keyword</label>
+              <input type="text" class="form-control form-control-lg form-control-a" placeholder="Keyword">
+            </div>
+          </div>
+          <div class="col-md-6 mb-2">
+            <div class="form-group mt-3">
+              <label class="pb-2" for="Type">Type</label>
+              <select class="form-control form-select form-control-a" id="Type">
+                <option>All Type</option>
+                <option>For Rent</option>
+                <option>For Sale</option>
+                <option>Open House</option>
+              </select>
+            </div>
+          </div>
+          <div class="col-md-6 mb-2">
+            <div class="form-group mt-3">
+              <label class="pb-2" for="city">City</label>
+              <select class="form-control form-select form-control-a" id="city">
+                <option>All City</option>
+                <option>Alabama</option>
+                <option>Arizona</option>
+                <option>California</option>
+                <option>Colorado</option>
+              </select>
+            </div>
+          </div>
+          <div class="col-md-6 mb-2">
+            <div class="form-group mt-3">
+              <label class="pb-2" for="bedrooms">Bedrooms</label>
+              <select class="form-control form-select form-control-a" id="bedrooms">
+                <option>Any</option>
+                <option>01</option>
+                <option>02</option>
+                <option>03</option>
+              </select>
+            </div>
+          </div>
+          <div class="col-md-6 mb-2">
+            <div class="form-group mt-3">
+              <label class="pb-2" for="garages">Garages</label>
+              <select class="form-control form-select form-control-a" id="garages">
+                <option>Any</option>
+                <option>01</option>
+                <option>02</option>
+                <option>03</option>
+                <option>04</option>
+              </select>
+            </div>
+          </div>
+          <div class="col-md-6 mb-2">
+            <div class="form-group mt-3">
+              <label class="pb-2" for="bathrooms">Bathrooms</label>
+              <select class="form-control form-select form-control-a" id="bathrooms">
+                <option>Any</option>
+                <option>01</option>
+                <option>02</option>
+                <option>03</option>
+              </select>
+            </div>
+          </div>
+          <div class="col-md-6 mb-2">
+            <div class="form-group mt-3">
+              <label class="pb-2" for="price">Min Price</label>
+              <select class="form-control form-select form-control-a" id="price">
+                <option>Unlimite</option>
+                <option>$50,000</option>
+                <option>$100,000</option>
+                <option>$150,000</option>
+                <option>$200,000</option>
+              </select>
+            </div>
+          </div>
+          <div class="col-md-12">
+            <button type="submit" class="btn btn-b">Search Property</button>
+          </div>
+        </div>
+      </form>
+    </div>
+  </div><!-- End Property Search Section -->>
+
+  <!-- ======= Header/Navbar ======= -->
+  <nav class="navbar navbar-default navbar-trans navbar-expand-lg fixed-top">
+    <div class="container">
+      <button class="navbar-toggler collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#navbarDefault" aria-controls="navbarDefault" aria-expanded="false" aria-label="Toggle navigation">
+        <span></span>
+        <span></span>
+        <span></span>
+      </button>
+      
+      <a class="navbar-brand text-brand" href="index.html">FindM<span class="color-b">yNest</span></a>
+
+      <div class="navbar-collapse collapse justify-content-center" id="navbarDefault">
+        <ul class="navbar-nav">
+          <li class="nav-item">
+            <a class="nav-link active" href="{% url 'index' %}">Home</a>
+          </li>
+
+          <li class="nav-item">
+            <a class="nav-link " href="{% url 'about' %}">About</a>
+          </li>
+
+          {% if user.is_superuser %}
+          <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Property</a>
+            <div class="dropdown-menu">
+              <a class="dropdown-item " href="{% url 'propertylist' %}">All Property</a>
+            </div>
+          </li>
+          <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false"> Welcome,  {{ user.username }}!</a>
+            <div class="dropdown-menu">
+              <a class="dropdown-item " href="{% url 'logout' %}">Logout</a>
+            </div>
+          </li>
+          {%  elif  user.is_authenticated %}
+          <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle"  href="#" id="PropertyDropdown" role="button" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Property</a>
+            <div class="dropdown-menu">
+                <a class="dropdown-item" id ="All_property" href="{% url 'propertylist' %}">All Property</a>
+                {% for property_type in property_types %}
+                    <a class="dropdown-item"  href="{% url 'property_list_by_type' property_type=property_type %}">{{ property_type }}</a>
+                {% endfor %}
+            </div>
+        </li>
+           <li class="nav-item">
+            <a class="nav-link " href="{% url 'addproperty' %}">Post Property</a>
+          </li> 
+          <li class="nav-item">
+            <a class="nav-link " href="{% url 'agentlist' %}">Agent</a>
+          </li>
+          <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle" href="#" id="ProfileDropdown" role="button" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false"> Welcome,  {{ user.username }}!</a>
+            <div class="dropdown-menu">
+              <a class="dropdown-item " href="{% url 'logout' %}">Logout</a>
+              <a class="dropdown-item " id="profile" href="{% url 'editprofile' %}">Profile</a>
+              <a class="dropdown-item " href="{% url 'wishlist_view' %}">wishlist</a>
+            </div>
+          </li>
+          {% else %}
+          <li class="nav-item">
+            <a class="nav-link " href="contact.html">Welcome, guest!</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link " href="/register">Register</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link " id=" "href="{% url 'login' %}">Login</a>
+          </li>
+          {% endif %}
+        </ul>
+
+      </div>
+    </div>
+  </nav>
+  <!-- End Header/Navbar -->
+
+  <main id="main">
+    <!-- =======Intro Single ======= -->
+    <section class="intro-single">
+        <h1>Legal Rental Agreement Template</h1>
+    </section><!-- End Intro Single-->
+
+    <!-- ======= Agents Grid ======= -->
+    <section class="agents-grid grid">
+        <div class="container">
+            <form id="dynamicForm">
+                <label for="lessorName">LESSOR Name:</label>
+    <input type="text" id="lessorName" value="" oninput="updateTemplate()" onblur="validateName(this)" required>
+    
+    <label for="lessorMobile">LESSOR Mobile Number:</label>
+    <input type="tel" id="lessorMobile" pattern="[0-9]{10}" value="" oninput="updateTemplate()" onblur="validatePhoneNumber(this)" required>
+    
+    <label for="lessorAddress">LESSOR Address:</label>
+    <input type="text" id="lessorAddress" value="" oninput="updateTemplate()" onblur="validateAddress(this)" required>
+    
+    <label for="lesseeName">LESSEE Name:</label>
+    <input type="text" id="lesseeName" value="" oninput="updateTemplate()" onblur="validateName(this)" required>
+    
+    <label for="lesseeMobile">LESSEE Mobile Number:</label>
+    <input type="tel" id="lesseeMobile" pattern="[0-9]{10}" value="" oninput="updateTemplate()" onblur="validatePhoneNumber(this)" required>
+    
+    <label for="lesseeAddress">LESSEE Address:</label>
+    <input type="text" id="lesseeAddress" value="" oninput="updateTemplate()" onblur="validateAddress(this)" required>
+    
+    <label for="leaseTerm">Lease Term (Months):</label>
+    <input type="number" id="leaseTerm" value="" oninput="updateTemplate()" required>
+    
+    <label for="monthlyRent">Monthly Rent (₹):</label>
+    <input type="number" id="monthlyRent" value="" oninput="updateTemplate()" onblur="validatePrice(this)" required>
+    
+    <label for="rentDueDate">Rent Due Date:</label>
+    <input type="date" id="rentDueDate" value="" oninput="updateTemplate()" required>
+    
+    <label for="depositAmount">Deposit Amount (₹):</label>
+    <input type="number" id="depositAmount" value="" oninput="updateTemplate()" onblur="validatePrice(this)" required>
+    
+    <label for="todayDate">Today's Date:</label>
+    <input type="date" id="todayDate" oninput="updateTemplate()" required>
+    
+    <div id="propertyType">
+        <label for="propertyTypeSelect">Property Type:</label>
+        <select id="propertyTypeSelect" onchange="updateTemplate()">
+            <option value="residential">Residential</option>
+            <option value="non-residential">Non-Residential</option>
+        </select>
+    </div>
+    
+    <div id="floorDetails">
+        <label for="floorNumber">Floor Number:</label>
+        <input type="text" id="floorNumber" placeholder="E.g., Ground, 1st, 2nd, etc." oninput="updateTemplate()">
+    </div>
+    
+    <div id="parkingDetails">
+        <label for="parkingOption">Parking:</label>
+        <input type="checkbox" id="parkingOption" onchange="updateTemplate()"> With Parking
+    </div>
+                <button type="button" onclick="generatePDF()">Generate Agreement (PDF)</button>
+            </form>
+    
+            <div id="template"></div>
+        </div>
+
+    </section><!-- End Agents Grid-->
+
+  </main><!-- End #main -->
+  <script src="https://rawgit.com/eKoopmans/html2pdf/master/dist/html2pdf.bundle.js"></script>
+  <script>
+      function updateTemplate() {
+          const lessorName = document.getElementById('lessorName').value;
+          const lessorMobile = document.getElementById('lessorMobile').value;
+          const lessorAddress = document.getElementById('lessorAddress').value;
+          const lesseeName = document.getElementById('lesseeName').value;
+          const lesseeMobile = document.getElementById('lesseeMobile').value;
+          const lesseeAddress = document.getElementById('lesseeAddress').value;
+          const leaseTerm = document.getElementById('leaseTerm').value;
+          const monthlyRent = document.getElementById('monthlyRent').value;
+          const rentDueDate = document.getElementById('rentDueDate').value;
+          const depositAmount = document.getElementById('depositAmount').value;
+          const todayDate = document.getElementById('todayDate').value;
+          const propertyType = document.getElementById('propertyTypeSelect').value;
+          const floorNumber = document.getElementById('floorNumber').value;
+          const withParking = document.getElementById('parkingOption').checked ? 'With Parking' : 'Without Parking';
+
+          const template = `
+              <h2>RENTAL AGREEMENT</h2>
+              
+              <p>This agreement made on this ${getDate()} between <span class="user-input"><strong>${lessorName}</strong></span>, with <span class="user-input"><strong>${lessorMobile}</strong></span> as Mobile Number, residing at <span class="user-input"><strong>${lessorAddress}</strong></span>, hereinafter referred to as the 'LESSOR' of the One Part AND <span class="user-input"><strong>${lesseeName}</strong></span>, with <span class="user-input"><strong>${lesseeMobile}</strong></span> as Mobile Number, residing at <span class="user-input"><strong>${lesseeAddress}</strong></span>, hereinafter referred to as the 'LESSEE(s)' of the other Part;</p>
+
+              <p>WHEREAS the Lessor is the lawful owner of, and otherwise well sufficiently entitled to, and comprising of present in Floor <span class="user-input"><strong>${floorNumber}</strong></span>,<strong> ${propertyType === 'residential' ? 'residential' : 'non-residential'} </strong> property<strong> ${withParking} </strong> hereinafter referred to as the 'said premises'.</p>
+
+              <p>AND WHEREAS at the request of the Lessee, the Lessor has agreed to let the said premises to the tenant for a term of <span class="user-input"><strong>${leaseTerm}</strong></span> Months commencing from ${todayDate} in the manner hereinafter appearing.</p>
+
+              <p>NOW THIS AGREEMENT WITNESSETH AND IT IS HEREBY AGREED BY AND BETWEEN THE PARTIES AS UNDER:</p>
+
+              <ol>
+                  <li>That the Lessor hereby grants to the Lessee, the right to enter and use and remain in the said premises along with the existing fixtures and fittings listed in Annexure 1 to this Agreement and that the Lessee shall be entitled to peacefully possess and enjoy possession of the said premises for use, and the other rights herein.</li>
+
+                  <li>That the lease hereby granted shall, unless canceled earlier under any provision of this Agreement, remain in force for a period of <span class="user-input"><strong>${leaseTerm}</strong></span> Months.</li>
+
+                  <li>That the Lessee will have the option to terminate this lease by giving in writing to the Lessor.</li>
+
+                  <li>That the Lessee shall have no right to create any sub-lease or assign or transfer in any manner the lease or give to anyone the possession of the said premises or any part thereof.</li>
+
+                  <li>That the Lessee shall use the said premises only for residential purposes.</li>
+
+                  <li>That the Lessor shall, before handing over the said premises, ensure the working of sanitary, electrical and water supply connections and other fittings pertaining to the said premises. It is agreed that it shall be the responsibility of the Lessor for their return in the working condition at the time of re-possession of the said premises, subject to normal wear and tear.</li>
+
+                  <li>That the Lessee is not authorized to make any alteration in the construction of the said premises.</li>
+
+                  <li>That the day-to-day repair jobs shall be affected by the Lessee at his own cost, and any major repairs, either structural or to the electrical or water connection, plumbing leaks, water seepage shall be attended to by the Lessor. In the event of the Lessor failing to carry out the repairs on receiving notice from the Lessee, the Lessee shall undertake the necessary repairs and the Lessor will be liable to immediately reimburse costs incurred by the Lessee.</li>
+
+                  <li>That the Lessor or its duly authorized agent shall have the right to enter or upon the said premises or any part thereof at a mutually arranged convenient time for the purpose of inspection.</li>
+
+                  <li>That in consideration of use of the said premises the Lessee agrees that he shall pay to the Lessor during the period of this agreement, a monthly rent at the rate of ₹<span class="user-input"><strong>${monthlyRent}</strong></span>. The amount will be paid in advance on or before the date of <span class="user-input"><strong>${rentDueDate}</strong></span> of every English calendar month.</li>
+
+                  <li>It is hereby agreed that in the event of default in payment of the rent for a consecutive period of three months, the Lessor shall be entitled to terminate the lease.</li>
+
+                  <li>That the Lessee has paid to the Lessor a sum of ₹<span class="user-input"><strong>${depositAmount}</strong></span>, free of interest. The said deposit shall be returned to the Lessee simultaneously with the Lessee vacating the said premises. In the event of failure on the part of the Lessor to refund the said deposit amount to the Lessee as aforesaid, the Lessee shall be entitled to continue to use and occupy the said premises without payment of any rent until the Lessor refunds the said amount.</li>
+
+                  <li>That the Lessor shall be responsible for the payment of all taxes and levies pertaining to the said premises including but not limited to House Tax, Property Tax, other cesses, if any, and any other statutory taxes, levied by the Government or Governmental Departments. During the term of this Agreement, the Lessor shall comply with all rules, regulations and requirements of any statutory authority, local, state, and central government, and governmental departments in relation to the said premises.</li>
+              </ol>
+
+              <p class="witness">IN WITNESS WHEREOF, the parties hereto have set their hands on the day and year first hereinabove mentioned.</p>
+
+              <p class="witness">Agreed & Accepted by the Lessor<br>${lessorName}</p>
+
+              <p class="witness">_____________</p>
+
+              <p class="witness">Agreed & Accepted by the Lessee <br> ${lesseeName}</p>
+
+              <p class="witness">_____________</p>
+              <p class="witness">_____________</p>
+
+              <p class="witness">WITNESS</p>
+              <p class="witness">_____________</p>
+              <p class="witness">_____________</p>
+              <p class="witness">_____________</p>
+          `;
+
+          document.getElementById('template').innerHTML = template;
+      }
+
+      function validateName(input) {
+          const namePattern = /^[A-Za-z ]+$/;
+          validateInput(input, namePattern);
+      }
+
+      function validatePhoneNumber(input) {
+          const phoneNumberPattern = /^(?!.*0{10})[6-9][0-9]{9}$/;
+          validateInput(input, phoneNumberPattern);
+      }
+
+      function validatePrice(input) {
+          const pricePattern = /^\d+(\.\d{1,2})?$/;
+          validateInput(input, pricePattern);
+      }
+
+      function validateAddress(input) {
+          const addressPattern = /^(?=.*[A-Za-z])[A-Za-z0-9(),\- ]+$/;
+          validateInput(input, addressPattern);
+      }
+
+      function validateInput(input, pattern) {
+          if (!pattern.test(input.value)) {
+              input.classList.add('is-invalid');
+          } else {
+              input.classList.remove('is-invalid');
+              input.classList.add('is-valid');
+          }
+      }
+
+      function generatePDF() {
+          // Check if any input has the "is-invalid" class
+          const invalidInputs = document.querySelectorAll('.is-invalid');
+          if (invalidInputs.length > 0) {
+              alert("Please fix validation errors before generating the PDF.");
+              return;
+          }
+
+          const element = document.getElementById('template');
+          const pdfOptions = {
+              margin: 10,
+              filename: 'legal_agreement.pdf',
+              image: { type: 'jpeg', quality: 0.98 }
+          };
+
+          html2pdf(element, pdfOptions);
+      }
+
+      function getDate() {
+          const now = new Date();
+          const year = now.getFullYear();
+          let month = now.getMonth() + 1;
+          let day = now.getDate();
+
+          // Ensure month and day are formatted with leading zeros
+          month = month < 10 ? '0' + month : month;
+          day = day < 10 ? '0' + day : day;
+
+          return `${year}-${month}-${day}`;
+      }
+  </script>
+  <!-- ======= Footer ======= -->
+  <section class="section-footer">
+    <div class="container">
+      <div class="row">
+        <div class="col-sm-12 col-md-4">
+          <div class="widget-a">
+            <div class="w-header-a">
+              <h3 class="w-title-a text-brand">EstateAgency</h3>
+            </div>
+            <div class="w-body-a">
+              <p class="w-text-a color-text-a">
+                Enim minim veniam quis nostrud exercitation ullamco laboris nisi ut aliquip exea commodo consequat duis
+                sed aute irure.
+              </p>
+            </div>
+            <div class="w-footer-a">
+              <ul class="list-unstyled">
+                <li class="color-a">
+                  <span class="color-text-a">Phone .</span> contact@example.com
+                </li>
+                <li class="color-a">
+                  <span class="color-text-a">Email .</span> +54 356 945234
+                </li>
+              </ul>
+            </div>
+          </div>
+        </div>
+        <div class="col-sm-12 col-md-4 section-md-t3">
+          <div class="widget-a">
+            <div class="w-header-a">
+              <h3 class="w-title-a text-brand">The Company</h3>
+            </div>
+            <div class="w-body-a">
+              <div class="w-body-a">
+                <ul class="list-unstyled">
+                  <li class="item-list-a">
+                    <i class="bi bi-chevron-right"></i> <a href="#">Site Map</a>
+                  </li>
+                  <li class="item-list-a">
+                    <i class="bi bi-chevron-right"></i> <a href="#">Legal</a>
+                  </li>
+                  <li class="item-list-a">
+                    <i class="bi bi-chevron-right"></i> <a href="#">Agent Admin</a>
+                  </li>
+                  <li class="item-list-a">
+                    <i class="bi bi-chevron-right"></i> <a href="#">Careers</a>
+                  </li>
+                  <li class="item-list-a">
+                    <i class="bi bi-chevron-right"></i> <a href="#">Affiliate</a>
+                  </li>
+                  <li class="item-list-a">
+                    <i class="bi bi-chevron-right"></i> <a href="#">Privacy Policy</a>
+                  </li>
+                </ul>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="col-sm-12 col-md-4 section-md-t3">
+          <div class="widget-a">
+            <div class="w-header-a">
+              <h3 class="w-title-a text-brand">International sites</h3>
+            </div>
+            <div class="w-body-a">
+              <ul class="list-unstyled">
+                <li class="item-list-a">
+                  <i class="bi bi-chevron-right"></i> <a href="#">Venezuela</a>
+                </li>
+                <li class="item-list-a">
+                  <i class="bi bi-chevron-right"></i> <a href="#">China</a>
+                </li>
+                <li class="item-list-a">
+                  <i class="bi bi-chevron-right"></i> <a href="#">Hong Kong</a>
+                </li>
+                <li class="item-list-a">
+                  <i class="bi bi-chevron-right"></i> <a href="#">Argentina</a>
+                </li>
+                <li class="item-list-a">
+                  <i class="bi bi-chevron-right"></i> <a href="#">Singapore</a>
+                </li>
+                <li class="item-list-a">
+                  <i class="bi bi-chevron-right"></i> <a href="#">Philippines</a>
+                </li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+  <footer>
+    <div class="container">
+      <div class="row">
+        <div class="col-md-12">
+          <nav class="nav-footer">
+            <ul class="list-inline">
+              <li class="list-inline-item">
+                <a href="#">Home</a>
+              </li>
+              <li class="list-inline-item">
+                <a href="#">About</a>
+              </li>
+              <li class="list-inline-item">
+                <a href="#">Property</a>
+              </li>
+              <li class="list-inline-item">
+                <a href="#">Blog</a>
+              </li>
+              <li class="list-inline-item">
+                <a href="#">Contact</a>
+              </li>
+            </ul>
+          </nav>
+          <div class="socials-a">
+            <ul class="list-inline">
+              <li class="list-inline-item">
+                <a href="#">
+                  <i class="bi bi-facebook" aria-hidden="true"></i>
+                </a>
+              </li>
+              <li class="list-inline-item">
+                <a href="#">
+                  <i class="bi bi-twitter" aria-hidden="true"></i>
+                </a>
+              </li>
+              <li class="list-inline-item">
+                <a href="#">
+                  <i class="bi bi-instagram" aria-hidden="true"></i>
+                </a>
+              </li>
+              <li class="list-inline-item">
+                <a href="#">
+                  <i class="bi bi-linkedin" aria-hidden="true"></i>
+                </a>
+              </li>
+            </ul>
+          </div>
+          <div class="copyright-footer">
+            <p class="copyright color-text-a">
+              &copy; Copyright
+              <span class="color-a">EstateAgency</span> All Rights Reserved.
+            </p>
+          </div>
+          <div class="credits">
+            <!--
+            All the links in the footer should remain intact.
+            You can delete the links only if you purchased the pro version.
+            Licensing information: https://bootstrapmade.com/license/
+            Purchase the pro version with working PHP/AJAX contact form: https://bootstrapmade.com/buy/?theme=EstateAgency
+          -->
+            Designed by <a href="https://bootstrapmade.com/">BootstrapMade</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </footer><!-- End  Footer -->
+
+  <div id="preloader"></div>
+  <a href="#" class="back-to-top d-flex align-items-center justify-content-center"><i class="bi bi-arrow-up-short"></i></a>
+
+  <!-- Vendor JS Files -->
+  <script src="{% static 'assets/vendor/bootstrap/js/bootstrap.bundle.min.js' %}"></script>
+  <script src="{% static 'assets/vendor/swiper/swiper-bundle.min.js' %}"></script>
+  <script src="{% static 'assets/vendor/php-email-form/validate.js' %}"></script>
+
+  <!-- Template Main JS File -->
+  <script src="{% static 'assets/js/main.js' %}"></script>
+
+</body>
+
+</html>

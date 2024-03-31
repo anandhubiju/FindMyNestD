@@ -1,0 +1,183 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Invoice</title>
+    <style>
+        /* Reset some default styles */
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            height: 100%; /* Make the body take up the full viewport height */
+        }
+        ul, li {
+            list-style: none;
+            margin: 0;
+            padding: 0;
+        }
+
+        /* Header styles */
+        .invoice-header {
+            background-color: #ffffff;
+            color: #000000;
+            padding: 10px;
+            text-align: center;
+            display: flex;
+            justify-content: space-between;
+            align-items: center; /* Center align items vertically */
+            margin-bottom: 20px; /* Reduced margin for better printing */
+        }
+
+        /* Company details styles */
+        .company-details {
+            color: #333; /* Change color to a darker shade */
+            text-align: right;
+        }
+
+        /* Details styles */
+        .invoice-details {
+            border: 1px solid #ccc;
+            padding: 20px;
+            margin: 20px auto;
+            max-width: 1100px;
+            display: grid; /* Use CSS grid for layout */
+            grid-gap: 20px; /* Gap between rows and columns */
+            flex-grow: 1; /* Allow content to grow and push the footer down */
+        }
+
+        .invoice-details h2 {
+            font-size: 24px;
+            margin-bottom: 20px;
+        }
+
+        /* Style the table */
+        .invoice-details table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 20px; /* Add margin to the top of the table */
+        }
+
+        .invoice-details table th,
+        .invoice-details table td {
+            padding: 10px;
+            text-align: left;
+            border: none; /* Remove table borders */
+        }
+
+        .invoice-details table th {
+            background-color: #108102; /* Header background color */
+            color: #fff; /* Header text color */
+        }
+
+        .invoice-details strong {
+            font-weight: bold;
+        }
+
+        /* Stylish button */
+        .download-button {
+            background-color: #007BFF;
+            color: #fff;
+            border: none;
+            padding: 10px 20px;
+            font-size: 18px;
+            text-decoration: none;
+            display: inline-block;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background-color 0.3s ease-in-out;
+        }
+
+        .download-button:hover {
+            background-color: #0056b3;
+        }
+
+        /* Style the first two divs as a row with two columns */
+        .invoice-details .row {
+            display: flex;
+            justify-content: space-between;
+        }
+
+        /* Style the table as a separate row */
+        .invoice-details .table-row {
+            display: block;
+        }
+
+        h1 {
+            margin-left: 190px; /* You can adjust the margin as needed */
+            font-size: 50px;
+        }
+
+        /* Footer styles */
+        .footer {
+            background-color: #ffffff;
+            color: #fff;
+            padding: 10px;
+            text-align: center;
+            position: absolute;
+            bottom: 0;
+            width: 100%;
+        }
+
+        /* Thank you message */
+        .thank-you {
+            font-size: 18px;
+            margin-bottom: 10px;
+        }
+
+        /* Company name in the footer */
+        .company-name {
+            font-weight: bold;
+        }
+    </style>
+</head>
+<body>
+    <div class="invoice-header">
+        <h1>Invoice</h1>
+        <div class="company-details" style="margin-right: 100px;">
+          <strong><p style="margin-bottom:1px !important;"><span style="color: black;">FindM</span><span style="color: green;">yNest</span> </p></strong><br>
+          <strong>8113825461</strong> <br>
+          <strong>findmynest.info@gmail.com</strong> 
+        </div>
+    </div>
+    <div class="invoice-details">
+        <div class="table-row">
+            <div>
+              <strong><p style="margin-bottom:1px !important;"><span style="color: black;">FindM</span><span style="color: green;">yNest</span> </p></strong><br>
+              <strong>8113825461</strong> <br>
+                <strong>findmynest.info@gmail.com</strong> 
+            </div>
+            <div>
+              <strong><p><span style="color: black; margin-bottom: 2px !important;">{{ username }}</span></p></strong>
+                            <strong>{{ phone_no }}</strong> <br>
+              <strong>{{ email }}</strong>
+            </div>
+        </div>
+        <div class="table-row">
+            <table>
+                <tr>
+                    <th><strong>Subscription Type</strong></th>
+                    <th><strong>Purchased Date</strong></th>
+                    <th><strong>Amount</strong></th>
+                </tr>
+                <tr>
+                    <td>
+                        {% for subscription in sub_type.all %}
+                            {{ subscription.sub_type }}
+                            {% if not forloop.last %}, {% endif %}
+                        {% endfor %}
+                    </td>
+                    <td>{{ payment.timestamp|date:"F d, Y" }}</td>
+                    <td>${{ amount }}</td>
+                </tr>
+            </table>
+        </div>
+    </div>
+    <!-- Footer -->
+    <div class="footer">
+        <div class="thank-you"><strong><p style="margin-bottom:1px !important;"><span style="color: black;">FindM</span><span style="color: green;">yNest</span> </p></strong><br>
+        </div>
+        <div class="company-name"><span style="color: green;">Thank You</span>
+        </div>
+    </div>
+</body>
+</html>

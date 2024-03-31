@@ -1,0 +1,934 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <meta content="width=device-width, initial-scale=1.0" name="viewport">
+
+  <title>FindMyNest</title>
+  <meta content="" name="Details">
+  <meta content="" name="keywords">
+
+  <!-- Favicons -->
+  <link href="{% static 'assets\images\Icon.png' %}" rel="icon">
+  <link href="{% static 'assets\images\Icon.png' %}"" rel="apple-touch-icon">
+
+  <!-- Google Fonts -->
+  <link href="https://fonts.googleapis.com/css?family=Poppins:300,400,500,600,700" rel="stylesheet">
+
+  <!-- Vendor CSS Files -->
+  <link href="{% static 'assets/vendor/animate.css/animate.min.css' %}" rel="stylesheet">
+  <link href="{% static 'assets/vendor/bootstrap/css/bootstrap.min.css' %}" rel="stylesheet">
+  <link href="{% static 'assets/vendor/bootstrap-icons/bootstrap-icons.css' %}" rel="stylesheet">
+  <link href="{% static 'assets/vendor/swiper/swiper-bundle.min.css' %}" rel="stylesheet">
+
+  <!-- Template Main CSS File -->
+  <link href="{% static 'assets/css/style.css' %}" rel="stylesheet">
+
+  <!-- =======================================================
+  * Template Name: EstateAgency
+  * Updated: Jul 27 2023 with Bootstrap v5.3.1
+  * Template URL: https://bootstrapmade.com/real-estate-agency-bootstrap-template/
+  * Author: BootstrapMade.com
+  * License: https://bootstrapmade.com/license/
+  ======================================================== -->
+
+<style>
+  /* Add this CSS to your existing stylesheet or in a new <style> tag in the head section */
+    /* Green Shade Styles */
+    form{
+      background-color:#ffffff;
+      width: 1000px;
+    }
+
+    .intro.intro-carousel {
+      margin-bottom: 0; /* Set the desired bottom margin value */
+      }
+
+      .card:hover {
+        box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
+        transition: 0.3s;
+    }
+
+    .card:hover {
+      background-color: #f0f8ff;
+  }
+
+  label {
+      display: block;
+      margin-bottom: 5px;
+  }
+
+  h2 {
+    color: #4caf50; /* Green color */
+    font-size: 40px; /* Adjust font size as needed */
+    margin-bottom: 20px; /* Add some bottom margin for spacing */
+  }
+
+
+   /* Remove default blue shade on input hover */
+   input[type="text"]:hover,
+   input[type="number"]:hover,
+   input[type="email"]:hover,
+   select:hover {
+       border-color: rgb(90, 185, 90); /* Change to green shade */
+      
+   }
+  button {
+      background-color: #4CAF50;
+      color: white;
+      padding: 10px 20px;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+  }
+  button:hover {
+      background-color: #45a049;
+  }
+  .employment-type {
+      display: flex;
+      justify-content: space-between;
+  }
+  .employment-type label {
+      flex-basis: 30%;
+  }
+  .btn-group label {
+    margin-right: 10px; /* Adjust as needed */
+}
+
+
+/* Remove background color */
+.btn-group label.btn.btn-secondary {
+  background-color: transparent !important;
+  color: rgb(102, 101, 99);
+}
+
+/* Change background color to green when selected */
+.btn-group input[type="radio"].btn-check:checked + label.btn.btn-secondary {
+  background-color: rgb(46, 155, 46) !important;
+  color: rgb(255, 255, 255);
+
+}
+
+
+</style>
+
+</head>
+
+<body>
+
+  <!-- ======= Property Search Section ======= -->
+  <div class="click-closed"></div>
+  <!--/ Form Search Star /-->
+  <div class="box-collapse">
+    <div class="title-box-d">
+      <h3 class="title-d">Search Property</h3>
+    </div>
+    <span class="close-box-collapse right-boxed bi bi-x"></span>
+    <div class="box-collapse-wrap form">
+      <form class="form-a">
+        <div class="row">
+          <div class="col-md-12 mb-2">
+            <div class="form-group">
+              <label class="pb-2" for="Type">Keyword</label>
+              <input type="text" class="form-control form-control-lg form-control-a" placeholder="Keyword">
+            </div>
+          </div>
+          <div class="col-md-6 mb-2">
+            <div class="form-group mt-3">
+              <label class="pb-2" for="Type">Type</label>
+              <select class="form-control form-select form-control-a" id="Type">
+                <option>All Type</option>
+                <option>For Rent</option>
+                <option>For Sale</option>
+                <option>Open House</option>
+              </select>
+            </div>
+          </div>
+          <div class="col-md-6 mb-2">
+            <div class="form-group mt-3">
+              <label class="pb-2" for="city">City</label>
+              <select class="form-control form-select form-control-a" id="city">
+                <option>All City</option>
+                <option>Alabama</option>
+                <option>Arizona</option>
+                <option>California</option>
+                <option>Colorado</option>
+              </select>
+            </div>
+          </div>
+          <div class="col-md-6 mb-2">
+            <div class="form-group mt-3">
+              <label class="pb-2" for="bedrooms">Bedrooms</label>
+              <select class="form-control form-select form-control-a" id="bedrooms">
+                <option>Any</option>
+                <option>01</option>
+                <option>02</option>
+                <option>03</option>
+              </select>
+            </div>
+          </div>
+          <div class="col-md-6 mb-2">
+            <div class="form-group mt-3">
+              <label class="pb-2" for="garages">Garages</label>
+              <select class="form-control form-select form-control-a" id="garages">
+                <option>Any</option>
+                <option>01</option>
+                <option>02</option>
+                <option>03</option>
+                <option>04</option>
+              </select>
+            </div>
+          </div>
+          <div class="col-md-6 mb-2">
+            <div class="form-group mt-3">
+              <label class="pb-2" for="bathrooms">Bathrooms</label>
+              <select class="form-control form-select form-control-a" id="bathrooms">
+                <option>Any</option>
+                <option>01</option>
+                <option>02</option>
+                <option>03</option>
+              </select>
+            </div>
+          </div>
+          <div class="col-md-6 mb-2">
+            <div class="form-group mt-3">
+              <label class="pb-2" for="price">Min Price</label>
+              <select class="form-control form-select form-control-a" id="price">
+                <option>Unlimite</option>
+                <option>$50,000</option>
+                <option>$100,000</option>
+                <option>$150,000</option>
+                <option>$200,000</option>
+              </select>
+            </div>
+          </div>
+          <div class="col-md-12">
+            <button type="submit" class="btn btn-b">Search Property</button>
+          </div>
+        </div>
+      </form>
+    </div>
+  </div><!-- End Property Search Section -->>
+
+  <!-- ======= Header/Navbar ======= -->
+  <nav class="navbar navbar-default navbar-trans navbar-expand-lg fixed-top">
+    <div class="container">
+      <button class="navbar-toggler collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#navbarDefault" aria-controls="navbarDefault" aria-expanded="false" aria-label="Toggle navigation">
+        <span></span>
+        <span></span>
+        <span></span>
+      </button>
+      
+      <a class="navbar-brand text-brand" href="index.html">FindM<span class="color-b">yNest</span></a>
+
+      <div class="navbar-collapse collapse justify-content-center" id="navbarDefault">
+        <ul class="navbar-nav">
+          <li class="nav-item">
+            <a class="nav-link active" href="{% url 'index' %}">Home</a>
+          </li>
+
+          {% if user.is_superuser %}
+          <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Property</a>
+            <div class="dropdown-menu">
+              <a class="dropdown-item " href="{% url 'propertylist' %}">All Property</a>
+            </div>
+          </li>
+          <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false"> Welcome,  {{ user.username }}!</a>
+            <div class="dropdown-menu">
+              <a class="dropdown-item " href="{% url 'logout' %}">Logout</a>
+            </div>
+          </li>
+          {%  elif  user.is_authenticated %}
+          <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle"  href="#" id="PropertyDropdown" role="button" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Property</a>
+            <div class="dropdown-menu">
+                <a class="dropdown-item" id ="All_property" href="{% url 'propertylist' %}">All Property</a>
+                {% for property_type in property_types %}
+                    <a class="dropdown-item"  href="{% url 'property_list_by_type' property_type=property_type %}">{{ property_type }}</a>
+                {% endfor %}
+            </div>
+        </li>
+        
+           <li class="nav-item">
+            <a class="nav-link " href="{% url 'addproperty' %}">Post Property</a>
+          </li> 
+          <li class="nav-item">
+            <a class="nav-link " href="{% url 'agentlist' %}">Agent</a>
+          </li>
+
+          <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle" href="#" id="ProfileDropdown" role="button" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Home Loan</a>
+            <div class="dropdown-menu">
+              <a class="dropdown-item " href="{% url 'home_loan_application' %}">Apply Loan</a>
+              <a class="dropdown-item " id="profile" href="{% url 'mortgage_calculator' %}">Calculate Home Loan EMI</a>
+            </div>
+          </li>
+
+
+          <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle" href="#" id="ProfileDropdown" role="button" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Property Services</a>
+            <div class="dropdown-menu">
+              <a class="dropdown-item " href="{% url 'addproperty' %}">Post Property</a>
+              <a class="dropdown-item " href="{% url 'renForm' %}">Rent Agreement</a>
+            </div>
+          </li>
+
+          <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle" href="#" id="ProfileDropdown" role="button" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false"> Welcome,  {{ user.username }}!</a>
+            <div class="dropdown-menu">
+              <a class="dropdown-item " href="{% url 'logout' %}">Logout</a>
+              <a class="dropdown-item " id="profile" href="{% url 'editprofile' %}">Profile</a>
+              <a class="dropdown-item " href="{% url 'wishlist_view' %}">wishlist</a>
+            </div>
+          </li>
+          {% else %}
+          <li class="nav-item">
+            <a class="nav-link " href="contact.html">Welcome, guest!</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link " href="/register">Register</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link " id=" "href="{% url 'login' %}">Login</a>
+          </li>
+          {% endif %}
+        </ul>
+
+      </div>
+    </div>
+  </nav><!-- End Header/Navbar -->
+  <!-- End Header/Navbar -->
+
+  <main id="main">
+    <!-- =======Intro Single ======= -->
+    <div class="intro intro-carousel swiper position-relative"style="height: 650px;">
+
+    <div class="swiper-wrapper">
+      <div class="swiper-slide carousel-item-a intro-item bg-image" style="background-image: url({% static 'assets/img/loan.jpg' %}); height: 650px;">
+        <div class="overlay overlay-a"></div>
+        <div class="intro-content display-table">
+          <div class="table-cell">
+            <div class="container">
+              <div class="row">
+                <div class="col-lg-8">
+                  <div class="intro-body">
+                    <p class="intro-title-top">FindMyNest
+                      <br>Your navigator in realestate excellences
+                    </p>
+                    <h1 class="intro-title mb-4 ">
+                      <span class="color-b">Apply For Loan</span> 
+                      <br>
+                    </h1>
+
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+	</div>
+  </div>
+
+    <!-- ======= Agents Grid ======= -->
+    <section class="agents-grid grid" style="width: 100%; ">
+      <div class="container">
+        <div class="row">
+
+
+          <div class="col-md-3 mt-3 mt-md-5">
+            <center><h2><b>How it works</b></h2></center>
+            <div class="card mt-3">
+                <div class="card-body">
+                    <img src="{% static 'assets/img/doc-file_8586269.png' %}" class="img-fluid mx-auto d-block" alt="Image" style="margin-top: 20px; margin-bottom: 20px; width: 70px; height: 70px;">
+                    <center><p class="card-text" style="color: gray;"><b>1. Fill an online form to view the best offers from our partner banks.</b></p></center>
+                </div>
+            </div>
+            <div class="card mt-3">
+                <img src="{% static 'assets/img/worker_10854747.png' %}" class="img-fluid mx-auto d-block" alt="Image" style="margin-top: 20px; width: 70px; height: 70px;">
+                <div class="card-body">
+                    <center><p class="card-text" style="color: gray;"><b>2. Our executive helps you choose the best offer for your requirement.</b></p></center>
+                </div>
+            </div>
+            <div class="card mt-3">
+                <img src="{% static 'assets/img/bank_5197955.png' %}" class="img-fluid mx-auto d-block" alt="Image" style="margin-top: 20px; width: 70px; height: 70px;">
+                <div class="card-body">
+                    <center><p class="card-text" style="color: gray;"><b>3. We pick up documents at your doorstep and submit to the bank**.</b></p></center>
+                </div>
+            </div>
+            <div class="card mt-3">
+                <img src="{% static 'assets/img/loan_10770485.png' %}" class="img-fluid mx-auto d-block" alt="Image" style="margin-top: 20px; width: 70px; height: 70px;">
+                <div class="card-body">
+                    <center><p class="card-text" style="color: gray;"><b>4. Bank reviews your application and confirms approval.</b></p></center>
+                </div>
+            </div>
+        </div>
+
+
+        <div class="col-md-6">
+          <form method="post" id="save" enctype="multipart/form-data">
+            {% csrf_token %}
+            <section class="gray pt-5 pb-5">
+                <div class="container">
+                    <div class="row justify-content-center">
+                        <div class="col-lg-10">
+                            <div class="dashboard-body">
+                                <div class="dashboard-wraper">
+                                    <div class="row">
+                                        <div class="col-lg-12">
+                                            <!-- Basic Information -->
+                                            <div class="row mb-4">
+                                                <div class="col-md-6">
+                                                    <label for="name" class="form-label">Name:</label>
+                                                    <input type="text" class="form-control" id="name" name="name" required>
+                                                    <div class="invalid-feedback">Please provide a valid name.</div>
+                                                    <div class="valid-feedback">Name is valid.</div>
+                                                </div>
+                                                <div class="col-md-6">
+                                                    <label for="monthly_income" class="form-label">Monthly Income:</label>
+                                                    <input type="number" class="form-control" id="monthly_income" name="monthly_income" required>
+                                                    <div class="invalid-feedback">Please provide a valid monthly income.</div>
+                                                    <div class="valid-feedback">Monthly income is valid.</div>
+                                                </div>
+                                            </div>
+    
+                                            <div class="row mb-4">
+                                                <div class="col-md-6">
+                                                    <label for="loan_amount" class="form-label">Loan Amount:</label>
+                                                    <input type="number" class="form-control" id="loan_amount" name="loan_amount" required>
+                                                    <div class="invalid-feedback">Please provide a valid loan amount.</div>
+                                                    <div class="valid-feedback">Loan amount is valid.</div>
+                                                </div>
+                                                <div class="col-md-6">
+                                                    <label for="property_buying_city" class="form-label">Property Buying City:</label>
+                                                    <input type="text" class="form-control" id="property_buying_city" name="property_buying_city" required>
+                                                    <div class="invalid-feedback">Please provide a valid city name.</div>
+                                                    <div class="valid-feedback">City name is valid.</div>
+                                                </div>
+                                            </div>
+    
+                                            <div class="row mb-4">
+                                                <div class="col-md-6">
+                                                    <label for="email" class="form-label">Email:</label>
+                                                    <input type="email" class="form-control" id="email" name="email" required>
+                                                    <div class="invalid-feedback">Please provide a valid email address.</div>
+                                                    <div class="valid-feedback">Email address is valid.</div>
+                                                </div>
+                                                <div class="col-md-6">
+                                                    <label for="age" class="form-label">Age:</label>
+                                                    <input type="number" class="form-control" id="age" name="age" required>
+                                                    <div class="invalid-feedback">Please provide a valid age.</div>
+                                                    <div class="valid-feedback">Age is valid.</div>
+                                                </div>
+                                            </div>
+    
+                                            <div class="row mb-4">
+                                                <div class="col-md-6">
+                                                    <label for="gender" class="form-label">Gender:</label>
+                                                    <div class="btn-group" role="group" aria-label="Gender">
+                                                        <input type="radio" class="btn-check" name="gender" id="male" autocomplete="off" value="Male" required>
+                                                        <label class="btn btn-secondary" for="male">Male</label>
+    
+                                                        <input type="radio" class="btn-check" name="gender" id="female" autocomplete="off" value="Female">
+                                                        <label class="btn btn-secondary" for="female">Female</label>
+    
+                                                        <input type="radio" class="btn-check" name="gender" id="other" autocomplete="off" value="Other">
+                                                        <label class="btn btn-secondary" for="other">Other</label>
+                                                    </div>
+                                                </div>
+    
+                                                <div class="col-md-6">
+                                                    <label for="employment_type" class="form-label">Employment Type:</label>
+                                                    <div class="employment-type">
+                                                        <div class="btn-group" role="group" aria-label="Employment Type">
+                                                            <input type="radio" class="btn-check" name="employment_type" id="self_employed" autocomplete="off" value="Self Employed" required>
+                                                            <label class="btn btn-secondary" for="self_employed">Self Employed</label>
+    
+                                                            <input type="radio" class="btn-check" name="employment_type" id="business" autocomplete="off" value="Business">
+                                                            <label class="btn btn-secondary" for="business">Business</label>
+    
+                                                            <input type="radio" class="btn-check" name="employment_type" id="salaried" autocomplete="off" value="Salaried">
+                                                            <label class="btn btn-secondary" for="salaried">Salaried</label>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+    
+                                            <div class="row mb-4">
+                                                <div class="col-md-6">
+                                                    <label for="ongoing_emi" class="form-label">Ongoing EMI:</label>
+                                                    <input type="number" class="form-control" id="ongoing_emi" name="ongoing_emi">
+                                                    <div class="invalid-feedback">Please provide a valid ongoing EMI amount.</div>
+                                                    <div class="valid-feedback">Ongoing EMI is valid.</div>
+                                                </div>
+                                                <div class="col-md-6">
+                                                    <label for="credit_score" class="form-label">Credit Score(if Known):</label>
+                                                    <div class="btn-group" role="group" aria-label="Credit Score">
+                                                        <input type="radio" class="btn-check" name="credit_score_option" id="credit_score_yes" autocomplete="off" value="Yes" onchange="toggleCreditScoreInput()">
+                                                        <label class="btn btn-secondary" for="credit_score_yes">Yes</label>
+    
+                                                        <input type="radio" class="btn-check" name="credit_score_option" id="credit_score_no" autocomplete="off" value="No" onchange="toggleCreditScoreInput()">
+                                                        <label class="btn btn-secondary" for="credit_score_no">No</label>
+                                                    </div>
+                                                    <input type="number" class="form-control mt-3" id="credit_score_input" name="credit_score" style="display: none;">
+                                                </div>
+                                            </div>
+    
+                                            <hr>
+    
+                                            <div class="row mb-4">
+                                                <div class="col-md-6">
+                                                    <label for="has_nominee" class="form-label">Do you have a nominee?</label>
+                                                    <input type="checkbox" id="has_nominee" name="has_nominee" onchange="showNomineeDetails()">
+                                                </div>
+                                            </div>
+    
+                                            <div id="nominee_section" style="display: none;">
+                                                <h3>Nominee Details</h3>
+    
+                                                <div class="row mb-3">
+                                                    <div class="col-md-6">
+                                                        <label for="nominee_name" class="form-label">Name:</label>
+                                                        <input type="text" class="form-control" id="nominee_name" name="nominee_name" required>
+                                                        <div class="invalid-feedback">Please provide a valid nominee name.</div>
+                                                        <div class="valid-feedback">Nominee name is valid.</div>
+                                                    </div>
+                                                    <div class="col-md-6">
+                                                        <label for="nominee_email" class="form-label">Nominee Email:</label>
+                                                        <input type="email" class="form-control" id="nominee_email" name="nominee_email">
+                                                        <div class="invalid-feedback">Please provide a valid email address for the nominee.</div>
+                                                        <div class="valid-feedback">Nominee email is valid.</div>
+                                                    </div>
+                                                </div>
+                                                
+                                                <div class="row mb-3">
+                                                    <div class="col-md-6">
+                                                        <label for="phone_number" class="form-label">Phone Number:</label>
+                                                        <input type="text" class="form-control" id="phone_number" name="phone_number">
+                                                        <div class="invalid-feedback">Please provide a valid phone number for the nominee.</div>
+                                                        <div class="valid-feedback">Nominee phone number is valid.</div>
+                                                    </div>
+                                                </div>
+    
+                                                <div class="row mb-3">
+                                                    <div class="col-md-6">
+                                                        <label for="relationship" class="form-label">Relationship with Applicant:</label>
+                                                        <div class="relationship-options">
+                                                            <div class="btn-group" role="group" aria-label="Relationship with Applicant">
+                                                                <input type="radio" class="btn-check" name="relationship" id="brother" autocomplete="off" value="Brother" required>
+                                                                <label class="btn btn-secondary" for="brother">Brother</label>
+                                                        
+                                                                <input type="radio" class="btn-check" name="relationship" id="father" autocomplete="off" value="Father">
+                                                                <label class="btn btn-secondary" for="father">Father</label>
+                                                        
+                                                                <input type="radio" class="btn-check" name="relationship" id="mother" autocomplete="off" value="Mother">
+                                                                <label class="btn btn-secondary" for="mother">Mother</label>
+    
+                                                                <input type="radio" class="btn-check" name="relationship" id="husband_wife" autocomplete="off" value="Husband/Wife">
+                                                                <label class="btn btn-secondary" for="husband_wife">Husband/Wife</label>
+    
+                                                                <input type="radio" class="btn-check" name="relationship" id="son_daughter" autocomplete="off" value="Son/Daughter">
+                                                                <label class="btn btn-secondary" for="son_daughter">Son/Daughter</label>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+    
+                                            <div class="row">
+                                                <div class="col-md-12">
+                                                    <button class="btn btn-success" type="submit">Submit</button>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+        </form>
+      </div>
+
+
+
+
+        
+        
+        <script>
+          function showNomineeDetails() {
+              var hasNominee = document.getElementById('has_nominee').checked;
+              var nomineeSection = document.getElementById('nominee_section');
+              nomineeSection.style.display = hasNominee ? 'block' : 'none';
+          }
+
+          function toggleCreditScoreInput() {
+            var creditScoreInput = document.getElementById("credit_score_input");
+            var creditScoreYes = document.getElementById("credit_score_yes");
+    
+            if (creditScoreYes.checked) {
+                creditScoreInput.style.display = "block";
+                creditScoreInput.required = true;
+            } else {
+                creditScoreInput.style.display = "none";
+                creditScoreInput.required = false;
+            }
+        }
+      </script>
+
+      <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const nameInput = document.getElementById('name');
+            const monthlyIncomeInput = document.getElementById('monthly_income');
+            const loanAmountInput = document.getElementById('loan_amount');
+            const propertyBuyingCityInput = document.getElementById('property_buying_city');
+            const emailInput = document.getElementById('email');
+            const ageInput = document.getElementById('age');
+            const ongoingEmiInput = document.getElementById('ongoing_emi');
+            const creditScoreInput = document.getElementById('credit_score_input');
+            const phoneNumberInput = document.getElementById('phone_number');
+            const nomineeEmailInput = document.getElementById('nominee_email');
+            const nominee_nameInput = document.getElementById('nominee_name');
+    
+            nameInput.addEventListener('change', function(event) { validateName(); });
+            monthlyIncomeInput.addEventListener('change', function(event) { validateMonthlyIncome(); });
+            loanAmountInput.addEventListener('change', function(event) { validateLoanAmount(); });
+            propertyBuyingCityInput.addEventListener('change', function(event) { validatePropertyBuyingCity(); });
+            emailInput.addEventListener('change', function(event) { validateEmail(); });
+            ageInput.addEventListener('change', function(event) { validateAge(); });
+            ongoingEmiInput.addEventListener('change', function(event) { validateOngoingEmi(); });
+            phoneNumberInput.addEventListener('change', function(event) { validatePhoneNumber(); });
+            nomineeEmailInput.addEventListener('change', function(event) { validateNomineeEmail(); });
+            nominee_nameInput.addEventListener('change', function(event) { validateNominee_Name(); });
+    
+            function validateName() {
+                const namePattern = /^[A-Za-z ]+$/;
+                if (!namePattern.test(nameInput.value)) {
+                    nameInput.classList.add('is-invalid');
+                    nameInput.classList.remove('is-valid');
+                    return false;
+                } else {
+                    nameInput.classList.remove('is-invalid');
+                    nameInput.classList.add('is-valid');
+                    return true;
+                }
+            }
+
+            function validateNominee_Name() {
+              const namePattern = /^[A-Za-z ]+$/;
+              if (!namePattern.test(nominee_nameInput.value)) {
+                nominee_nameInput.classList.add('is-invalid');
+                nominee_nameInput.classList.remove('is-valid');
+                  return false;
+              } else {
+                nominee_nameInput.classList.remove('is-invalid');
+                nominee_nameInput.classList.add('is-valid');
+                  return true;
+              }
+          }
+    
+            function validateMonthlyIncome() {
+                const income = parseFloat(monthlyIncomeInput.value);
+                if (isNaN(income) || income <= 14000) {
+                    monthlyIncomeInput.classList.add('is-invalid');
+                    monthlyIncomeInput.classList.remove('is-valid');
+                    return false;
+                } else {
+                    monthlyIncomeInput.classList.remove('is-invalid');
+                    monthlyIncomeInput.classList.add('is-valid');
+                    return true;
+                }
+            }
+    
+            function validateLoanAmount() {
+                const amount = parseFloat(loanAmountInput.value);
+                if (isNaN(amount) || amount <= 0) {
+                    loanAmountInput.classList.add('is-invalid');
+                    loanAmountInput.classList.remove('is-valid');
+                    return false;
+                } else {
+                    loanAmountInput.classList.remove('is-invalid');
+                    loanAmountInput.classList.add('is-valid');
+                    return true;
+                }
+            }
+    
+            function validatePropertyBuyingCity() {
+                const cityPattern = /^[A-Za-z ]+$/;
+                if (!cityPattern.test(propertyBuyingCityInput.value)) {
+                    propertyBuyingCityInput.classList.add('is-invalid');
+                    propertyBuyingCityInput.classList.remove('is-valid');
+                    return false;
+                } else {
+                    propertyBuyingCityInput.classList.remove('is-invalid');
+                    propertyBuyingCityInput.classList.add('is-valid');
+                    return true;
+                }
+            }
+    
+            function validateEmail() {
+                const emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+                if (!emailPattern.test(emailInput.value)) {
+                    emailInput.classList.add('is-invalid');
+                    emailInput.classList.remove('is-valid');
+                    return false;
+                } else {
+                    emailInput.classList.remove('is-invalid');
+                    emailInput.classList.add('is-valid');
+                    return true;
+                }
+            }
+    
+            function validateAge() {
+                const age = parseInt(ageInput.value);
+                if (isNaN(age) || age <= 0) {
+                    ageInput.classList.add('is-invalid');
+                    ageInput.classList.remove('is-valid');
+                    return false;
+                } else {
+                    ageInput.classList.remove('is-invalid');
+                    ageInput.classList.add('is-valid');
+                    return true;
+                }
+            }
+    
+            function validateOngoingEmi() {
+                const emi = parseFloat(ongoingEmiInput.value);
+                if (isNaN(emi) || emi < 0) {
+                    ongoingEmiInput.classList.add('is-invalid');
+                    ongoingEmiInput.classList.remove('is-valid');
+                    return false;
+                } else {
+                    ongoingEmiInput.classList.remove('is-invalid');
+                    ongoingEmiInput.classList.add('is-valid');
+                    return true;
+                }
+            }
+    
+            function validatePhoneNumber() {
+                const phoneNumberPattern = /^(?!.*0000)[6-9][0-9]{9}$/;
+                if (!phoneNumberPattern.test(phoneNumberInput.value)) {
+                    phoneNumberInput.classList.add('is-invalid');
+                    phoneNumberInput.classList.remove('is-valid');
+                    return false;
+                } else {
+                    phoneNumberInput.classList.remove('is-invalid');
+                    phoneNumberInput.classList.add('is-valid');
+                    return true;
+                }
+            }
+    
+            function validateNomineeEmail() {
+                const emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+                if (!emailPattern.test(nomineeEmailInput.value)) {
+                    nomineeEmailInput.classList.add('is-invalid');
+                    nomineeEmailInput.classList.remove('is-valid');
+                    return false;
+                } else {
+                    nomineeEmailInput.classList.remove('is-invalid');
+                    nomineeEmailInput.classList.add('is-valid');
+                    return true;
+                }
+            }
+    
+            function checkAll() {
+                if (validateName() && validateMonthlyIncome() && validateLoanAmount() && validatePropertyBuyingCity() && validateEmail() && validateAge() && validateOngoingEmi() && validatePhoneNumber() && validateNomineeEmail()) {
+                    return true;
+                }
+                return false;
+            }
+        });
+    </script>
+
+    
+        <script>
+          // Initialization for ES Users
+          import { Ripple, initMDB } from "mdb-ui-kit";
+
+          initMDB({ Ripple });
+        </script>
+        </div>
+        </div>
+      </div>
+    </section><!-- End Agents Grid-->
+
+  </main><!-- End #main -->
+
+  <!-- ======= Footer ======= -->
+  <section class="section-footer">
+    <div class="container">
+      <div class="row">
+        <div class="col-sm-12 col-md-4">
+          <div class="widget-a">
+            <div class="w-header-a">
+              <h3 class="w-title-a text-brand">FindMyNest</h3>
+            </div>
+            <div class="w-body-a">
+              <p class="w-text-a color-text-a">
+                FindMyNest is an innovative online platform designed to simplify the process of property management and real estate transactions. 
+                  This digital solution aims to provide users with the convenience of searching for, viewing, and booking properties from the comfort of their own space. 
+                  With a user-friendly interface, FindMyNest allows clients to explore a wide range of properties, 
+                  from residences to offices, and even assists in property-related services like home shifting and home loans.
+              </p>
+            </div>
+            <div class="w-footer-a">
+              <ul class="list-unstyled">
+                <li class="color-a">
+                  <span class="color-text-a">Phone .</span> +91 8113825461
+                </li>
+                <li class="color-a">
+                  <span class="color-text-a">Email .</span> findmynest@gmail.com
+                </li>
+              </ul>
+            </div>
+          </div>
+        </div>
+        <div class="col-sm-12 col-md-4 section-md-t3">
+          <div class="widget-a">
+            <div class="w-header-a">
+              <h3 class="w-title-a text-brand">The Company</h3>
+            </div>
+            <div class="w-body-a">
+              <div class="w-body-a">
+                <ul class="list-unstyled">
+                  <li class="item-list-a">
+                    <i class="bi bi-chevron-right"></i> <a href="#">Site Map</a>
+                  </li>
+                  <li class="item-list-a">
+                    <i class="bi bi-chevron-right"></i> <a href="#">Legal</a>
+                  </li>
+                  <li class="item-list-a">
+                    <i class="bi bi-chevron-right"></i> <a href="#">Agent Admin</a>
+                  </li>
+                  <li class="item-list-a">
+                    <i class="bi bi-chevron-right"></i> <a href="#">Careers</a>
+                  </li>
+                  <li class="item-list-a">
+                    <i class="bi bi-chevron-right"></i> <a href="#">Affiliate</a>
+                  </li>
+                  <li class="item-list-a">
+                    <i class="bi bi-chevron-right"></i> <a href="#">Privacy Policy</a>
+                  </li>
+                </ul>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="col-sm-12 col-md-4 section-md-t3">
+          <div class="widget-a">
+            <div class="w-header-a">
+              <h3 class="w-title-a text-brand">International sites</h3>
+            </div>
+            <div class="w-body-a">
+              <ul class="list-unstyled">
+                <li class="item-list-a">
+                  <i class="bi bi-chevron-right"></i> <a href="#">Venezuela</a>
+                </li>
+                <li class="item-list-a">
+                  <i class="bi bi-chevron-right"></i> <a href="#">China</a>
+                </li>
+                <li class="item-list-a">
+                  <i class="bi bi-chevron-right"></i> <a href="#">Hong Kong</a>
+                </li>
+                <li class="item-list-a">
+                  <i class="bi bi-chevron-right"></i> <a href="#">Argentina</a>
+                </li>
+                <li class="item-list-a">
+                  <i class="bi bi-chevron-right"></i> <a href="#">Singapore</a>
+                </li>
+                <li class="item-list-a">
+                  <i class="bi bi-chevron-right"></i> <a href="#">Philippines</a>
+                </li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+  <footer>
+    <div class="container">
+      <div class="row">
+        <div class="col-md-12">
+          <nav class="nav-footer">
+            <ul class="list-inline">
+              <li class="list-inline-item">
+                <a href="#">Home</a>
+              </li>
+              <li class="list-inline-item">
+                <a href="#">About</a>
+              </li>
+              <li class="list-inline-item">
+                <a href="#">Property</a>
+              </li>
+              <li class="list-inline-item">
+                <a href="#">Blog</a>
+              </li>
+              <li class="list-inline-item">
+                <a href="#">Contact</a>
+              </li>
+            </ul>
+          </nav>
+          <div class="socials-a">
+            <ul class="list-inline">
+              <li class="list-inline-item">
+                <a href="#">
+                  <i class="bi bi-facebook" aria-hidden="true"></i>
+                </a>
+              </li>
+              <li class="list-inline-item">
+                <a href="#">
+                  <i class="bi bi-twitter" aria-hidden="true"></i>
+                </a>
+              </li>
+              <li class="list-inline-item">
+                <a href="#">
+                  <i class="bi bi-instagram" aria-hidden="true"></i>
+                </a>
+              </li>
+              <li class="list-inline-item">
+                <a href="#">
+                  <i class="bi bi-linkedin" aria-hidden="true"></i>
+                </a>
+              </li>
+            </ul>
+          </div>
+          <div class="copyright-footer">
+            <p class="copyright color-text-a">
+              &copy; Copyright
+              <span class="color-a">FindMyNest</span> All Rights Reserved.
+            </p>
+          </div>
+          <div class="credits">
+            <!--
+            All the links in the footer should remain intact.
+            You can delete the links only if you purchased the pro version.
+            Licensing information: https://bootstrapmade.com/license/
+            Purchase the pro version with working PHP/AJAX contact form: https://bootstrapmade.com/buy/?theme=EstateAgency
+          -->
+            <!-- Designed by <a href="https://bootstrapmade.com/">BootstrapMade</a> -->
+          </div>
+        </div>
+      </div>
+    </div>
+  </footer><!-- End  Footer -->
+
+  <div id="preloader"></div>
+  <a href="#" class="back-to-top d-flex align-items-center justify-content-center"><i class="bi bi-arrow-up-short"></i></a>
+
+  <!-- Vendor JS Files -->
+  <script src="{% static 'assets/vendor/bootstrap/js/bootstrap.bundle.min.js' %}"></script>
+  <script src="{% static 'assets/vendor/swiper/swiper-bundle.min.js' %}"></script>
+  <script src="{% static 'assets/vendor/php-email-form/validate.js' %}"></script>
+
+  <!-- Template Main JS File -->
+  <script src="{% static 'assets/js/main.js' %}"></script>
+
+</body>
+
+</html>

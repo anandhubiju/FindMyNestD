@@ -1,0 +1,725 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <meta content="width=device-width, initial-scale=1.0" name="viewport">
+
+  <title>FindMyNest</title>
+  <meta content="" name="description">
+  <meta content="" name="keywords">
+
+  <!-- Favicons -->
+  <link href="{% static 'assets\images\Icon.png' %}" rel="icon">
+  <link href="{% static 'assets\images\Icon.png' %}"" rel="apple-touch-icon">
+
+  <!-- Google Fonts -->
+  <link href="https://fonts.googleapis.com/css?family=Poppins:300,400,500,600,700" rel="stylesheet">
+
+  <!-- Vendor CSS Files -->
+  <link href="{% static 'assets/vendor/animate.css/animate.min.css' %}" rel="stylesheet">
+  <link href="{% static 'assets/vendor/bootstrap/css/bootstrap.min.css' %}" rel="stylesheet">
+  <link href="{% static 'assets/vendor/bootstrap-icons/bootstrap-icons.css' %}" rel="stylesheet">
+  <link href="{% static 'assets/vendor/swiper/swiper-bundle.min.css' %}" rel="stylesheet">
+
+  <!-- Template Main CSS File -->
+  <link href="{% static 'assets/css/style.css' %}" rel="stylesheet">
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
+  <!-- =======================================================
+  * Template Name: EstateAgency
+  * Updated: Jul 27 2023 with Bootstrap v5.3.1
+  * Template URL: https://bootstrapmade.com/real-estate-agency-bootstrap-template/
+  * Author: BootstrapMade.com
+  * License: https://bootstrapmade.com/license/
+  ======================================================== -->
+
+<style>
+  /* Add this CSS to your existing stylesheet or in a new <style> tag in the head section */
+
+    /* Updated style for emi-calculator */
+.emi-calculator {
+  max-width: 1100px;
+  margin-top: 100px;
+  margin-left: 10px;
+  padding: 30px;
+  background-color: #d7f3e3; /* Green shade background color */
+  border-radius: 10px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1); /* Box shadow for a subtle effect */
+}
+
+/* Heading style */
+h2 {
+  color: #4caf50; /* Green color */
+  font-size: 35px; /* Adjust font size as needed */
+  margin-bottom: 20px; /* Add some bottom margin for spacing */
+}
+
+
+/* Table style */
+table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-top: 20px;
+}
+
+/* Header row style */
+th {
+  background-color: #4caf50; /* Green background color */
+  color: #fff; /* White text color */
+  padding: 8px;
+  text-align: left;
+  border: 1px solid #ddd; /* Border for header cells */
+}
+
+/* Data row style */
+td {
+  padding: 8px;
+  border-bottom: 1px solid #ddd;
+  border-right: 1px solid #ddd; /* Border for right side of data cells */
+}
+
+/* Alternate row background color */
+tr:nth-child(even) {
+  background-color: #f2f2f2; /* Light gray background color */
+}
+
+
+
+
+
+    .mortgage-form {
+      max-width: 700px;
+      margin-top: 100px;
+      margin-left: 20px;
+      padding: 30px;
+      background-color: #ffffff;
+      border-radius: 10px;
+  }
+
+
+  .mortgage-form label {
+      display: block;
+      margin-bottom: 10px;
+      font-weight: bold;
+  }
+
+  .mortgage-form input[type="range"] {
+      width: 100%;
+      height: 20px;
+      -webkit-appearance: none;
+      background: #d3d3d3;
+      border-radius: 5px;
+      outline: none;
+      margin-bottom: 10px;
+  }
+
+  .mortgage-form input[type="range"]::-webkit-slider-thumb {
+      -webkit-appearance: none;
+      appearance: none;
+      width: 20px;
+      height: 20px;
+      background: #4CAF50;
+      cursor: pointer;
+      border-radius: 50%;
+  }
+
+  .mortgage-form output {
+      display: block;
+      margin-top: 5px;
+      font-size: 14px;
+  }
+
+  .mortgage-form button {
+      width: 100%;
+      background-color: #4CAF50;
+      color: white;
+      padding: 10px 20px;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+      font-size: 16px;
+  }
+
+  .mortgage-form button:hover {
+      background-color: #45a049;
+  }
+
+.result {
+  margin-top: 20px;
+  padding: 20px;
+  background-color: #f0f0f0;
+  border-radius: 8px;
+}
+
+.result h2 {
+  margin-top: 0;
+}
+
+</style>
+</head>
+
+<body>
+
+  <!-- ======= Property Search Section ======= -->
+  <div class="click-closed"></div>
+  <!--/ Form Search Star /-->
+  <div class="box-collapse">
+    <div class="title-box-d">
+      <h3 class="title-d">Search Property</h3>
+    </div>
+    <span class="close-box-collapse right-boxed bi bi-x"></span>
+    <div class="box-collapse-wrap form">
+      <form class="form-a">
+        <div class="row">
+          <div class="col-md-12 mb-2">
+            <div class="form-group">
+              <label class="pb-2" for="Type">Keyword</label>
+              <input type="text" class="form-control form-control-lg form-control-a" placeholder="Keyword">
+            </div>
+          </div>
+          <div class="col-md-6 mb-2">
+            <div class="form-group mt-3">
+              <label class="pb-2" for="Type">Type</label>
+              <select class="form-control form-select form-control-a" id="Type">
+                <option>All Type</option>
+                <option>For Rent</option>
+                <option>For Sale</option>
+                <option>Open House</option>
+              </select>
+            </div>
+          </div>
+          <div class="col-md-6 mb-2">
+            <div class="form-group mt-3">
+              <label class="pb-2" for="city">City</label>
+              <select class="form-control form-select form-control-a" id="city">
+                <option>All City</option>
+                <option>Alabama</option>
+                <option>Arizona</option>
+                <option>California</option>
+                <option>Colorado</option>
+              </select>
+            </div>
+          </div>
+          <div class="col-md-6 mb-2">
+            <div class="form-group mt-3">
+              <label class="pb-2" for="bedrooms">Bedrooms</label>
+              <select class="form-control form-select form-control-a" id="bedrooms">
+                <option>Any</option>
+                <option>01</option>
+                <option>02</option>
+                <option>03</option>
+              </select>
+            </div>
+          </div>
+          <div class="col-md-6 mb-2">
+            <div class="form-group mt-3">
+              <label class="pb-2" for="garages">Garages</label>
+              <select class="form-control form-select form-control-a" id="garages">
+                <option>Any</option>
+                <option>01</option>
+                <option>02</option>
+                <option>03</option>
+                <option>04</option>
+              </select>
+            </div>
+          </div>
+          <div class="col-md-6 mb-2">
+            <div class="form-group mt-3">
+              <label class="pb-2" for="bathrooms">Bathrooms</label>
+              <select class="form-control form-select form-control-a" id="bathrooms">
+                <option>Any</option>
+                <option>01</option>
+                <option>02</option>
+                <option>03</option>
+              </select>
+            </div>
+          </div>
+          <div class="col-md-6 mb-2">
+            <div class="form-group mt-3">
+              <label class="pb-2" for="price">Min Price</label>
+              <select class="form-control form-select form-control-a" id="price">
+                <option>Unlimite</option>
+                <option>$50,000</option>
+                <option>$100,000</option>
+                <option>$150,000</option>
+                <option>$200,000</option>
+              </select>
+            </div>
+          </div>
+          <div class="col-md-12">
+            <button type="submit" class="btn btn-b">Search Property</button>
+          </div>
+        </div>
+      </form>
+    </div>
+  </div><!-- End Property Search Section -->>
+
+  <!-- ======= Header/Navbar ======= -->
+  <nav class="navbar navbar-default navbar-trans navbar-expand-lg fixed-top">
+    <div class="container">
+      <button class="navbar-toggler collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#navbarDefault" aria-controls="navbarDefault" aria-expanded="false" aria-label="Toggle navigation">
+        <span></span>
+        <span></span>
+        <span></span>
+      </button>
+      
+      <a class="navbar-brand text-brand" href="index.html">FindM<span class="color-b">yNest</span></a>
+
+      <div class="navbar-collapse collapse justify-content-center" id="navbarDefault">
+        <ul class="navbar-nav">
+          <li class="nav-item">
+            <a class="nav-link active" href="{% url 'index' %}">Home</a>
+          </li>
+
+          {% if user.is_superuser %}
+          <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Property</a>
+            <div class="dropdown-menu">
+              <a class="dropdown-item " href="{% url 'propertylist' %}">All Property</a>
+            </div>
+          </li>
+          <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false"> Welcome,  {{ user.username }}!</a>
+            <div class="dropdown-menu">
+              <a class="dropdown-item " href="{% url 'logout' %}">Logout</a>
+            </div>
+          </li>
+          {%  elif  user.is_authenticated %}
+          <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle"  href="#" id="PropertyDropdown" role="button" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Property</a>
+            <div class="dropdown-menu">
+                <a class="dropdown-item" id ="All_property" href="{% url 'propertylist' %}">All Property</a>
+                {% for property_type in property_types %}
+                    <a class="dropdown-item"  href="{% url 'property_list_by_type' property_type=property_type %}">{{ property_type }}</a>
+                {% endfor %}
+            </div>
+        </li>
+        
+           <li class="nav-item">
+            <a class="nav-link " href="{% url 'addproperty' %}">Post Property</a>
+          </li> 
+          <li class="nav-item">
+            <a class="nav-link " href="{% url 'agentlist' %}">Agent</a>
+          </li>
+
+          <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle" href="#" id="ProfileDropdown" role="button" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Home Loan</a>
+            <div class="dropdown-menu">
+              <a class="dropdown-item " href="{% url 'home_loan_application' %}">Apply Loan</a>
+              <a class="dropdown-item " id="profile" href="{% url 'mortgage_calculator' %}">Calculate Home Loan EMI</a>
+            </div>
+          </li>
+
+          
+
+          <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle" href="#" id="ProfileDropdown" role="button" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Property Services</a>
+            <div class="dropdown-menu">
+              <a class="dropdown-item " href="{% url 'addproperty' %}">Post Property</a>
+              <a class="dropdown-item " href="{% url 'renForm' %}">Rent Agreement</a>
+            </div>
+          </li>
+
+          <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle" href="#" id="ProfileDropdown" role="button" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false"> Welcome,  {{ user.username }}!</a>
+            <div class="dropdown-menu">
+              <a class="dropdown-item " href="{% url 'logout' %}">Logout</a>
+              <a class="dropdown-item " id="profile" href="{% url 'editprofile' %}">Profile</a>
+              <a class="dropdown-item " href="{% url 'wishlist_view' %}">wishlist</a>
+            </div>
+          </li>
+          {% else %}
+          <li class="nav-item">
+            <a class="nav-link " href="contact.html">Welcome, guest!</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link " href="/register">Register</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link " id=" "href="{% url 'login' %}">Login</a>
+          </li>
+          {% endif %}
+        </ul>
+
+      </div>
+    </div>
+  </nav><!-- End Header/Navbar -->
+  <!-- End Header/Navbar -->
+
+  <main id="main">
+    <!-- =======Intro Single ======= -->
+    <div class="intro intro-carousel swiper position-relative"style="height: 450px;">
+
+      <div class="swiper-wrapper">
+        <div class="swiper-slide carousel-item-a intro-item bg-image" style="background-image: url({% static 'assets/img/loan.jpg' %}); height: 450px;">
+          <div class="overlay overlay-a"></div>
+          <div class="intro-content display-table">
+            <div class="table-cell">
+              <div class="container">
+                <div class="row">
+                  <div class="col-lg-8">
+                    <div class="intro-body">
+                      <p class="intro-title-top">FindMyNest
+                        <br>Your navigator in realestate excellences
+                      </p>
+                      <h1 class="intro-title mb-4 ">
+                        <span class="color-b">Mortgage Calculator</span> 
+                        <br>
+                      </h1>
+  
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+    </div>
+    </div>
+
+    <!-- ======= Agents Grid ======= -->
+    <section class="agents-grid grid" style="width: 100%; " >
+      <div class="container">
+        <div class="row">
+          <div class="col-md-6">
+            <!-- <center><h2>Mortgage Calculator</h2></center> -->
+          <form method="post" id="mortgage-form" class="mortgage-form">
+            {% csrf_token %}
+            <label for="property_price">Property Price:</label>
+            <input type="range" id="property_price" name="property_price" min="50000" max="1000000" step="50000" value="50000"><br>
+            <output for="property_price" id="property_price_output">$50,000</output><br>
+            
+            <label for="down_payment">Down Payment:</label>
+            <input type="range" id="down_payment" name="down_payment" min="50000" max="1000000" step="1000" value="50000"><br>
+            <output for="down_payment" id="down_payment_output">$50,000</output><br>
+            
+            <label for="interest_rate">Interest Rate (%):</label>
+            <input type="range" id="interest_rate" name="interest_rate" min="12" max="35" step="1" value="12"><br>
+            <output for="interest_rate" id="interest_rate_output">12%</output><br>
+            
+            <label for="loan_term_years">Loan Term (Years):</label>
+            <input type="range" id="loan_term_years" name="loan_term_years" min="3" max="30" step="1" value="3"><br>
+            <output for="loan_term_years" id="loan_term_years_output">3 years</output><br>
+            
+            <button type="button" onclick="calculateMortgage()">Calculate</button>
+        </form>
+        <div id="result" class="result" style="display: none;">
+          <h2>Your Monthly Mortgage Payment:</h2>
+          <p id="monthly_payment"></p>
+      </div>
+        </div>
+        <div class="col-md-6">
+        <div class="emi-calculator">
+          <h2>Home Loan EMI Calculator</h2>
+          <p>FindMyNest Home loan calculator is very easy to use. Any individual who is looking to get a home loan or has already taken a loan can use it to check their EMIs.</p>
+          <p><strong>How to use Home Loan EMI Calculator</strong></p>
+          <ol>
+              <li>Enter the amount you want to borrow</li>
+              <li>Enter the tenure (in years) for which you want to borrow</li>
+              <li>Enter the rate of interest</li>
+              <li>Click on “Calculate Your EMI”</li>
+          </ol>
+          <p>After you take all these steps, you will be able to view your monthly instalment on your home loan.</p>
+          <p><strong>How the Home Loan Calculator Helps You</strong></p>
+          <p>Using the EMI calculator to know your EMIs in advance can be helpful in many ways. Check out some of the reasons why you should use it:</p>
+          <ul>
+              <li>How much should you borrow?</li>
+              <li>How long should the tenure be?</li>
+              <li>How much down payment should you make?</li>
+          </ul>
+          <p><strong>Factors Affecting Home Loan EMI</strong></p>
+          <p>There are multiple factors that can affect your home loan EMI. Check out some of the key factors below:</p>
+          <ul>
+              <li>Loan amount</li>
+              <li>Loan tenure</li>
+              <li>Interest rate</li>
+          </ul>
+          <p><strong>An Illustration to understand how your EMI changes with these factors:</strong></p>
+          <p>The table below shows estimated EMI based on different loan amounts and tenures.</p>
+          <table border="1">
+              <tr>
+                  <th>Tenure</th>
+                  <th>Loan amount Rs 30 Lakhs</th>
+                  <th>Loan amount Rs 60 Lakhs</th>
+                  <th>Loan amount Rs 1 Crore</th>
+              </tr>
+              <tr>
+                  <td>5 years</td>
+                  <td>Rs 59,403</td>
+                  <td>Rs 1,18,806</td>
+                  <td>Rs 1,98,011</td>
+              </tr>
+              <tr>
+                  <td>10 years</td>
+                  <td>Rs 34,832</td>
+                  <td>Rs 69,665</td>
+                  <td>Rs 1,16,108</td>
+              </tr>
+              <tr>
+                  <td>20 years</td>
+                  <td>Rs 23,259</td>
+                  <td>Rs 46,518</td>
+                  <td>Rs 77,530</td>
+              </tr>
+              <tr>
+                  <td>30 years</td>
+                  <td>Rs 19,959</td>
+                  <td>Rs 39,918</td>
+                  <td>Rs 66,530</td>
+              </tr>
+          </table>
+          <br>
+          <br>
+          <p>*For illustrative purposes only. The actual EMI amount may vary based on the rate of interest determined by the bank for you.</p>
+          <p><strong>How to Reduce Your Home Loan EMI</strong></p>
+          <p>If you are looking to get a new home loan or if you already have one, here are some tips to help you reduce your home loan EMI:</p>
+          <ul>
+              <li>Check with multiple lenders before finalizing your loan. Choose the one that offers you the best deal.</li>
+              <li>Don’t borrow more than you can afford. If you can’t afford to repay on time, don’t borrow.</li>
+              <li>Make a higher down payment. Lower the amount you borrow, lower the EMI.</li>
+              <li>Choose a longer tenure (but this also means you will be paying more interest over the period).</li>
+              <li>Make a prepayment on your loan, if and when possible.</li>
+              <li>Apply for a balance transfer home loan to get a better deal.</li>
+          </ul>
+      </div>
+    </div>
+
+        
+
+
+
+
+     
+
+        <script>
+            function calculateMortgage() {
+                var propertyPrice = parseFloat(document.getElementById('property_price').value);
+                var downPayment = parseFloat(document.getElementById('down_payment').value);
+                var interestRate = parseFloat(document.getElementById('interest_rate').value) / 100;
+                var loanTermYears = parseInt(document.getElementById('loan_term_years').value);
+                var numPayments = loanTermYears * 12;
+                
+                var principal = propertyPrice - downPayment;
+                var monthlyInterestRate = interestRate / 12;
+                var monthlyPayment = (principal * monthlyInterestRate) / (1 - Math.pow(1 + monthlyInterestRate, -numPayments));
+                
+                document.getElementById('monthly_payment').innerText = monthlyPayment.toFixed(2);
+                document.getElementById('result').style.display = 'block';
+            }
+            
+            // Update range output values
+            var propertyPriceInput = document.getElementById('property_price');
+            var propertyPriceOutput = document.getElementById('property_price_output');
+            propertyPriceOutput.innerHTML = '$' + propertyPriceInput.value;
+        
+            var downPaymentInput = document.getElementById('down_payment');
+            var downPaymentOutput = document.getElementById('down_payment_output');
+            downPaymentOutput.innerHTML = '$' + downPaymentInput.value;
+        
+            var interestRateInput = document.getElementById('interest_rate');
+            var interestRateOutput = document.getElementById('interest_rate_output');
+            interestRateOutput.innerHTML = interestRateInput.value + '%';
+        
+            var loanTermYearsInput = document.getElementById('loan_term_years');
+            var loanTermYearsOutput = document.getElementById('loan_term_years_output');
+            loanTermYearsOutput.innerHTML = loanTermYearsInput.value + ' years';
+        
+            propertyPriceInput.oninput = function() {
+                propertyPriceOutput.innerHTML = '$' + this.value;
+            }
+        
+            downPaymentInput.oninput = function() {
+                downPaymentOutput.innerHTML = '$' + this.value;
+            }
+        
+            interestRateInput.oninput = function() {
+                interestRateOutput.innerHTML = this.value + '%';
+            }
+        
+            loanTermYearsInput.oninput = function() {
+                loanTermYearsOutput.innerHTML = this.value + ' years';
+            }
+        </script>
+        
+        </div>
+        </div>
+      </div>
+    </section><!-- End Agents Grid-->
+
+  </main><!-- End #main -->
+
+  <!-- ======= Footer ======= -->
+  <section class="section-footer">
+    <div class="container">
+      <div class="row">
+        <div class="col-sm-12 col-md-4">
+          <div class="widget-a">
+            <div class="w-header-a">
+              <h3 class="w-title-a text-brand">FindMyNest</h3>
+            </div>
+            <div class="w-body-a">
+              <p class="w-text-a color-text-a">
+                FindMyNest is an innovative online platform designed to simplify the process of property management and real estate transactions. 
+                  This digital solution aims to provide users with the convenience of searching for, viewing, and booking properties from the comfort of their own space. 
+                  With a user-friendly interface, FindMyNest allows clients to explore a wide range of properties, 
+                  from residences to offices, and even assists in property-related services like home shifting and home loans.
+              </p>
+            </div>
+            <div class="w-footer-a">
+              <ul class="list-unstyled">
+                <li class="color-a">
+                  <span class="color-text-a">Phone .</span> +91 8113825461
+                </li>
+                <li class="color-a">
+                  <span class="color-text-a">Email .</span> findmynest@gmail.com
+                </li>
+              </ul>
+            </div>
+          </div>
+        </div>
+        <div class="col-sm-12 col-md-4 section-md-t3">
+          <div class="widget-a">
+            <div class="w-header-a">
+              <h3 class="w-title-a text-brand">The Company</h3>
+            </div>
+            <div class="w-body-a">
+              <div class="w-body-a">
+                <ul class="list-unstyled">
+                  <li class="item-list-a">
+                    <i class="bi bi-chevron-right"></i> <a href="#">Site Map</a>
+                  </li>
+                  <li class="item-list-a">
+                    <i class="bi bi-chevron-right"></i> <a href="#">Legal</a>
+                  </li>
+                  <li class="item-list-a">
+                    <i class="bi bi-chevron-right"></i> <a href="#">Agent Admin</a>
+                  </li>
+                  <li class="item-list-a">
+                    <i class="bi bi-chevron-right"></i> <a href="#">Careers</a>
+                  </li>
+                  <li class="item-list-a">
+                    <i class="bi bi-chevron-right"></i> <a href="#">Affiliate</a>
+                  </li>
+                  <li class="item-list-a">
+                    <i class="bi bi-chevron-right"></i> <a href="#">Privacy Policy</a>
+                  </li>
+                </ul>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="col-sm-12 col-md-4 section-md-t3">
+          <div class="widget-a">
+            <div class="w-header-a">
+              <h3 class="w-title-a text-brand">International sites</h3>
+            </div>
+            <div class="w-body-a">
+              <ul class="list-unstyled">
+                <li class="item-list-a">
+                  <i class="bi bi-chevron-right"></i> <a href="#">Venezuela</a>
+                </li>
+                <li class="item-list-a">
+                  <i class="bi bi-chevron-right"></i> <a href="#">China</a>
+                </li>
+                <li class="item-list-a">
+                  <i class="bi bi-chevron-right"></i> <a href="#">Hong Kong</a>
+                </li>
+                <li class="item-list-a">
+                  <i class="bi bi-chevron-right"></i> <a href="#">Argentina</a>
+                </li>
+                <li class="item-list-a">
+                  <i class="bi bi-chevron-right"></i> <a href="#">Singapore</a>
+                </li>
+                <li class="item-list-a">
+                  <i class="bi bi-chevron-right"></i> <a href="#">Philippines</a>
+                </li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+  <footer>
+    <div class="container">
+      <div class="row">
+        <div class="col-md-12">
+          <nav class="nav-footer">
+            <ul class="list-inline">
+              <li class="list-inline-item">
+                <a href="#">Home</a>
+              </li>
+              <li class="list-inline-item">
+                <a href="#">About</a>
+              </li>
+              <li class="list-inline-item">
+                <a href="#">Property</a>
+              </li>
+              <li class="list-inline-item">
+                <a href="#">Blog</a>
+              </li>
+              <li class="list-inline-item">
+                <a href="#">Contact</a>
+              </li>
+            </ul>
+          </nav>
+          <div class="socials-a">
+            <ul class="list-inline">
+              <li class="list-inline-item">
+                <a href="#">
+                  <i class="bi bi-facebook" aria-hidden="true"></i>
+                </a>
+              </li>
+              <li class="list-inline-item">
+                <a href="#">
+                  <i class="bi bi-twitter" aria-hidden="true"></i>
+                </a>
+              </li>
+              <li class="list-inline-item">
+                <a href="#">
+                  <i class="bi bi-instagram" aria-hidden="true"></i>
+                </a>
+              </li>
+              <li class="list-inline-item">
+                <a href="#">
+                  <i class="bi bi-linkedin" aria-hidden="true"></i>
+                </a>
+              </li>
+            </ul>
+          </div>
+          <div class="copyright-footer">
+            <p class="copyright color-text-a">
+              &copy; Copyright
+              <span class="color-a">FindMyNest</span> All Rights Reserved.
+            </p>
+          </div>
+          <div class="credits">
+            <!--
+            All the links in the footer should remain intact.
+            You can delete the links only if you purchased the pro version.
+            Licensing information: https://bootstrapmade.com/license/
+            Purchase the pro version with working PHP/AJAX contact form: https://bootstrapmade.com/buy/?theme=EstateAgency
+          -->
+            <!-- Designed by <a href="https://bootstrapmade.com/">BootstrapMade</a> -->
+          </div>
+        </div>
+      </div>
+    </div>
+  </footer><!-- End  Footer -->
+
+  <div id="preloader"></div>
+  <a href="#" class="back-to-top d-flex align-items-center justify-content-center"><i class="bi bi-arrow-up-short"></i></a>
+
+  <!-- Vendor JS Files -->
+  <script src="{% static 'assets/vendor/bootstrap/js/bootstrap.bundle.min.js' %}"></script>
+  <script src="{% static 'assets/vendor/swiper/swiper-bundle.min.js' %}"></script>
+  <script src="{% static 'assets/vendor/php-email-form/validate.js' %}"></script>
+
+  <!-- Template Main JS File -->
+  <script src="{% static 'assets/js/main.js' %}"></script>
+
+</body>
+
+</html>
